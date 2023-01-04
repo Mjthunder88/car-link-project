@@ -19,11 +19,11 @@ module.exports = {
             allowNull: false
         },
         first_name: {
-            type: DataTypes.STRING({length: 255}),
+            type: DataTypes.STRING,
             allowNull: false
         },
         last_name: {
-            type: DataTypes.STRING({length: 255}),
+            type: DataTypes.STRING,
             allowNull: false
         }
     }),
@@ -33,9 +33,6 @@ module.exports = {
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
         },
         year: {
             type: DataTypes.INTEGER({length: 4}),
@@ -51,6 +48,34 @@ module.exports = {
         },
         transmission: {
             type: DataTypes.STRING({length: 9}),
+            allowNull: false
+        }
+    }),
+    Users_car: db.define("users_car", {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        }
+    }),
+    Model: db.define("model", {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        }
+    }),
+    Manufacturer: db.define("manufacturer", {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING,
             allowNull: false
         }
     })
