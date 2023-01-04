@@ -35,8 +35,13 @@ module.exports = {
             primaryKey: true
         },
         year: {
-            type: DataTypes.INTEGER({length: 4}),
+            type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 2022,
+            validate: {
+                min: 1920,
+                max: 2030
+            }
         },
         mileage: {
             type: DataTypes.INTEGER,
@@ -44,19 +49,12 @@ module.exports = {
         },
         vin: {
             type: DataTypes.STRING({length: 17}),
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         transmission: {
             type: DataTypes.STRING({length: 9}),
             allowNull: false
-        }
-    }),
-    Users_car: db.define("users_car", {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true
         }
     }),
     Model: db.define("model", {
@@ -65,6 +63,11 @@ module.exports = {
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
         }
     }),
     Manufacturer: db.define("manufacturer", {
@@ -76,7 +79,8 @@ module.exports = {
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
     })
 }
