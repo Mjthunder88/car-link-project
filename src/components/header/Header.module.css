@@ -1,0 +1,15 @@
+.header {
+    height: 5rem;
+    padding: 0 1rem;
+    width: 100%;
+    border-bottom: solid black .2rem;
+    background-color: #FFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 18rem;
+    height: auto;
+}

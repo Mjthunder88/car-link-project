@@ -1,9 +1,23 @@
-import './App.css';
+import './components/UI/stylesheet.css';
+
+import {Routes, Route} from 'react-router-dom'
+
+import AuthScreen from './screens/AuthScreen';
+import Home from './screens/Home'
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>It works</h1>
+    <div className="main">
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/auth' element={<AuthScreen />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
