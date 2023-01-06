@@ -1,8 +1,8 @@
 .footer {
-    max-height: 200px;
-    height: 10rem;
+    max-height: 2rem;
     padding: 0 2rem;
     width: 100%;
+    margin-top: auto;
     border-top: solid black .2rem;
     background-color: #FFFF;
     display: flex;

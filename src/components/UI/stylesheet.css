@@ -5,10 +5,28 @@
   }
 
   .main {
+    min-height: 100%;
+    position: relative;
+    width: 100%;
     background-color: #FFFF;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+
+  input {
+    background-color: transparent;
+    border: .1rem solid #f6fff8;
+    padding: 1rem;
+    color: #f6fff8;
+    margin-bottom: 1rem;
+  }
+  input::placeholder{
+    color: #f6fff8;
+  }
+
+  label {
+    padding-bottom: .5rem;
   }
 
 
