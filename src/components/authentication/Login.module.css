@@ -1,65 +1,65 @@
 /* * Base screen css */
 .login_container {
-    max-height: 60rem;
-    height: 30rem;
-    width: 40vw;
-    margin-top: 5rem;
-    background-color: #6B9080;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #F6FFF8;
-    border-radius: 1rem;
+  max-height: 60rem;
+  height: 30rem;
+  width: 40vw;
+  margin-top: 5rem;
+  background-color: #6b9080;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f6fff8;
+  border-radius: 1rem;
 }
 
 .login_title {
-    text-align: center;
-    font-size: 3rem;
+  text-align: center;
+  font-size: 3rem;
 }
 
 .inner_top {
-    height: 50%;
-    width: 75%;
-    padding: 1rem 0;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
+  height: 50%;
+  width: 75%;
+  padding: 1rem 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .inner_bottom {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .login_btn {
-    background-color: #CCE3DE;
-    border: none;
-    border-radius: 1rem;
-    padding: 1rem;
-    width: 10rem;
-    transition: all .3s ease-in-out;
-    font-size: 1rem;
-    font-weight: bold;
+  background-color: #cce3de;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 10rem;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .login_btn:hover {
-    transform: scale(1.1,1.1);
-    cursor: pointer;
+  transform: scale(1.1, 1.1);
+  cursor: pointer;
 }
 
 .signUp_btn {
-    border: none;
-    background-color: transparent;
-    color: #F6FFF8;
-    font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  color: #f6fff8;
+  font-size: 1rem;
 }
 
 .signUp_btn:hover {
-    font-weight: bolder;
-    cursor: pointer;
+  font-weight: bolder;
+  cursor: pointer;
 }

@@ -1,9 +1,8 @@
 import React from "react";
 
-import styles from './SignUp.module.css'
+import styles from "./SignUp.module.css";
 
 const SignUp = (props) => {
-
   return (
     <div>
       <div className={styles.signUp_container}>
@@ -39,7 +38,11 @@ const SignUp = (props) => {
             Sign Up
           </button>
           <h4>Or</h4>
-          <button className={styles.login_btn} id="login-screen" onClick={props.authScreenHandler}>
+          <button
+            className={styles.login_btn}
+            id="login-screen"
+            onClick={props.authScreenHandler}
+          >
             Login
           </button>
         </div>

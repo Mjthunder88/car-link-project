@@ -3,8 +3,6 @@ import React from "react";
 import styles from "./Login.module.css";
 
 const Login = (props) => {
-
-
   return (
     <div className={styles.login_container}>
       <h2 className={styles.login_title}>Login</h2>
@@ -19,7 +17,11 @@ const Login = (props) => {
           Login
         </button>
         <h4>Or</h4>
-        <button className={styles.signUp_btn} id="sign-up-screen" onClick={props.authScreenHandler}>
+        <button
+          className={styles.signUp_btn}
+          id="sign-up-screen"
+          onClick={props.authScreenHandler}
+        >
           Sign up
         </button>
       </div>
