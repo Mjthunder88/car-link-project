@@ -17,6 +17,8 @@ const { PORT } = process.env;
 server.use(express.json());
 server.use(cors());
 
+const { register } = require('./controllers/auth')
+
 
 
 Manufacturer.hasMany(Model, {
@@ -52,6 +54,8 @@ Car.belongsTo(User, {
 });
 
 //! Endpoints below
+
+server.post('/register', register)
 
 //! syncing for database below
 db
