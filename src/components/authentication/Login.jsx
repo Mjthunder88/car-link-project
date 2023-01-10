@@ -1,22 +1,62 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { BiShow, BiHide } from "react-icons/bi";
+import axios from "axios";
 
 import styles from "./Login.module.css";
 
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
   };
 
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("/login", {
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err, "Error during login");
+        } else {
+          navigate("/");
+        }
+      });
+  };
+
   return (
-    <form className={styles.login_container}>
+    <form className={styles.login_container} onSubmit={submitHandler}>
       <h2 className={styles.login_title}>Login</h2>
       <div className={styles.inner_top}>
         <label htmlFor="email">Email</label>
-        <input id="email" type="text" placeholder=" Enter your email" />
+        <input
+          id="email"
+          type="text"
+          placeholder=" Enter your email"
+          onChange={emailHandler}
+          value={email}
+        />
         <label htmlFor="password">Password</label>
         <div className="password_show">
           {showPassword ? (
@@ -25,6 +65,8 @@ const Login = (props) => {
               type="text"
               placeholder="Enter your password"
               className="password_input"
+              onChange={passwordHandler}
+              value={password}
             />
           ) : (
             <input
@@ -32,6 +74,8 @@ const Login = (props) => {
               type="password"
               placeholder="Enter your password"
               className="password_input"
+              onChange={passwordHandler}
+              value={password}
             />
           )}
           <button

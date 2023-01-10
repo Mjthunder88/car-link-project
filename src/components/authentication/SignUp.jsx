@@ -38,7 +38,7 @@ const SignUp = (props) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3008/register", {
+      .post("/register", {
         firstName,
         lastName,
         email,
@@ -47,8 +47,13 @@ const SignUp = (props) => {
       .then((res) => {
         console.log(res.data);
       })
-      .catch((error) => console.log(error, "error during sign up"));
-    navigate("/");
+      .catch((error) => {
+        if (error) {
+          console.log(error, "error during sign up")
+        } else {
+          navigate("/");
+        }
+      });
     setEmail("");
     setFirstName("");
     setLastName("");

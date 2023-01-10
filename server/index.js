@@ -7,17 +7,16 @@ const db = require("./database");
 const {
   User,
   Car,
-  Users_car,
   Model,
   Manufacturer,
 } = require("./models/models");
 
-const { PORT } = process.env;
+const { SERVER_PORT } = process.env;
 
 server.use(express.json());
 server.use(cors());
 
-const { register } = require('./controllers/auth')
+const { register, login } = require('./controllers/auth')
 
 
 
@@ -56,6 +55,7 @@ Car.belongsTo(User, {
 //! Endpoints below
 
 server.post('/register', register)
+server.post('/login', login)
 
 //! syncing for database below
 db
@@ -66,4 +66,4 @@ db
     console.log(err);
   });
 
-server.listen(PORT, () => console.log(`Server running on ${PORT}`));
+server.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`));

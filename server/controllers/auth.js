@@ -21,8 +21,9 @@ const createToken = (email, id) => {
 
 module.exports = {
   register: async (req, res) => {
+    console.log('hello')
     try {
-      const { email, firstName, lastName , password } = req.body;
+      const { email, firstName, lastName, password } = req.body;
       const foundUser = await User.findOne({ where: { email: email } });
       if (foundUser) {
         res.status(400).send("An account with this email already exsists");
@@ -49,6 +50,31 @@ module.exports = {
     } catch (err) {
       console.log(err);
       res.sendStatus(400);
+    }
+  },
+  login: async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const foundUser = await User.findOne({ where: { email: email } });
+      if (foundUser) {
+        const isAuthorized = bcrypt.compareSync(password, foundUser.password);
+        if (isAuthorized) {
+          const token = createToken(
+            foundUser.dataValues.email,
+            foundUser.dataValues.id
+          );
+          res.status(200).send({
+            email: foundUser.dataValues.email,
+            userId: foundUser.dataValues.id,
+            token: token,
+          });
+        } else {
+          res.status(401).send("Cannont login")
+        }
+      }
+    } catch (err) {
+      console.log(err)
+      res.sendStatus(400)
     }
   },
 };
