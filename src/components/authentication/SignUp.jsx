@@ -4,13 +4,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./SignUp.module.css";
+import { BiShow, BiHide } from 'react-icons/bi'
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate();
+
+  const showPasswordHandler = () => {
+    setShowPassword(!showPassword)
+  }
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -78,13 +84,34 @@ const SignUp = (props) => {
           value={email}
         />
         <label htmlFor="password">Password</label>
-        <input
-          id="register-password"
-          type="password"
-          placeholder="Enter your password"
-          onChange={passwordHandler}
-          value={password}
-        />
+        <div className="password_show">
+          {showPassword ? (
+            <input
+              id="password"
+              type="text"
+              placeholder="Enter your password"
+              className="password_input"
+              value={password}
+              onChange={passwordHandler}
+            />
+          ) : (
+            <input
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+              className="password_input"
+              value={password}
+              onChange={passwordHandler}
+            />
+          )}
+          <button
+            type="button"
+            className="show_button"
+            onClick={showPasswordHandler}
+          >
+            {showPassword ? <BiShow size="2rem" /> : <BiHide size="2rem" />}
+          </button>
+        </div>
       </div>
       <div className={styles.inner_bottom}>
         <button className={styles.signUp_btn} id="sign-up-btn">

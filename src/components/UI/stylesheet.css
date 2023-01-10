@@ -20,11 +20,34 @@ input {
   padding: 1rem;
   color: #f6fff8;
   margin-bottom: 1rem;
+  width: 100%;
 }
 input::placeholder {
   color: #f6fff8;
 }
 
+input:focus {
+  outline: none;
+}
+
 label {
   padding-bottom: 0.5rem;
+}
+
+.password_input {
+  border: transparent;
+  margin-bottom: 0;
+}
+
+.password_show {
+  border: solid .1rem;
+  display: flex;
+  align-items: center;
+  padding-right: .3rem;
+}
+
+.show_button {
+  background: none;
+  border: none;
+  color: #f6fff8;
 }
