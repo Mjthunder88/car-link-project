@@ -1,15 +1,55 @@
 .header {
-    height: 5rem;
-    padding: 0 1rem;
-    width: 100%;
-    border-bottom: solid black .2rem;
-    background-color: #FFFF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 5rem;
+  padding: 0 1rem;
+  width: 100%;
+  border-bottom: solid black 0.2rem;
+  background-color: #ffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
-    width: 18rem;
-    height: auto;
+  width: 18rem;
+  height: auto;
+}
+
+.drop_down {
+  display: none;
+  transition: all 5s ease-in-out;
+}
+
+.drop_down_displayed {
+  height: auto;
+  position: fixed;
+  right: 0.2px;
+  width: 12rem;
+  z-index: 300;
+  transition: all 3s ease-in-out;
+  background-color: #f6fff8;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header_link {
+  text-decoration: none;
+  color: #6b9080;
+  border-bottom: 0.1rem solid transparent;
+  padding-bottom: 0.5rem;
+}
+
+.header_link:hover {
+  border-bottom: 0.1rem solid #6b9080;
+}
+
+.header_link button {
+  background: none;
+  border: none;
+  font-size: 1.17rem;
+  color: #6b9080;
+  font-weight: bold;
 }

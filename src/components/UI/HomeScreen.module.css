@@ -1,0 +1,21 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main h1 {
+    color: #f6fff8;
+    font-size: 3rem;
+   text-align: center;
+   padding-bottom: 3rem;
+}
+
+.main_background {
+    background-image: url(../../assets/bannerMedium5.jpg);
+    background-color: #6b9080;
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    width:100%;
+    padding: 10rem 0;
+}
