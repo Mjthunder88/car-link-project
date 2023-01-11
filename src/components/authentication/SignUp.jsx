@@ -36,7 +36,6 @@ const SignUp = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     axios
       .post("/register", {
         firstName,
@@ -71,6 +70,7 @@ const SignUp = (props) => {
           placeholder=" Enter your first name"
           onChange={firstNameHandler}
           value={firstName}
+          required
         />
         <label htmlFor="last-name">Last name</label>
         <input
@@ -79,6 +79,7 @@ const SignUp = (props) => {
           placeholder="Enter your last name"
           onChange={lastNameHandler}
           value={lastName}
+          required
         />
         <label htmlFor="email">Email</label>
         <input
@@ -87,6 +88,7 @@ const SignUp = (props) => {
           placeholder="Enter your email"
           onChange={emailHandler}
           value={email}
+          required
         />
         <label htmlFor="password">Password</label>
         <div className="password_show">
@@ -98,6 +100,7 @@ const SignUp = (props) => {
               className="password_input"
               value={password}
               onChange={passwordHandler}
+              required
             />
           ) : (
             <input
@@ -107,6 +110,7 @@ const SignUp = (props) => {
               className="password_input"
               value={password}
               onChange={passwordHandler}
+              required
             />
           )}
           <button

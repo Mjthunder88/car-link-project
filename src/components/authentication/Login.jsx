@@ -35,14 +35,15 @@ const Login = (props) => {
       })
       .then((res) => {
         console.log(res.data)
+        navigate("/");
       })
       .catch((err) => {
         if (err) {
           console.log(err, "Error during login");
-        } else {
-          navigate("/");
-        }
+        } 
       });
+      setEmail("")
+      setPassword("")
   };
 
   return (
@@ -56,6 +57,7 @@ const Login = (props) => {
           placeholder=" Enter your email"
           onChange={emailHandler}
           value={email}
+          required
         />
         <label htmlFor="password">Password</label>
         <div className="password_show">
@@ -67,6 +69,7 @@ const Login = (props) => {
               className="password_input"
               onChange={passwordHandler}
               value={password}
+              required
             />
           ) : (
             <input
@@ -76,6 +79,7 @@ const Login = (props) => {
               className="password_input"
               onChange={passwordHandler}
               value={password}
+              required
             />
           )}
           <button

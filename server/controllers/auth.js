@@ -21,7 +21,6 @@ const createToken = (email, id) => {
 
 module.exports = {
   register: async (req, res) => {
-    console.log('hello')
     try {
       const { email, firstName, lastName, password } = req.body;
       const foundUser = await User.findOne({ where: { email: email } });
@@ -71,6 +70,8 @@ module.exports = {
         } else {
           res.status(401).send("Cannont login")
         }
+      } else {
+        res.status(400).send("No user found with that email")
       }
     } catch (err) {
       console.log(err)
