@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { BiShow, BiHide } from "react-icons/bi";
@@ -6,12 +6,14 @@ import axios from "axios";
 
 import styles from "./Login.module.css";
 
+import AuthContext from "../../store/GlobalContext";
+
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+  const authCtx = useContext(AuthContext)
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
@@ -35,6 +37,7 @@ const Login = (props) => {
       })
       .then((res) => {
         console.log(res.data)
+        authCtx.login(res.data.token, res.data.exp, res.data.userId)
         navigate("/");
       })
       .catch((err) => {

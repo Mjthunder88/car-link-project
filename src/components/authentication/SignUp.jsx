@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./SignUp.module.css";
-import { BiShow, BiHide } from 'react-icons/bi'
+import { BiShow, BiHide } from "react-icons/bi";
+
+import AuthContext from "../../store/GlobalContext";
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
 
   const showPasswordHandler = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -45,12 +48,12 @@ const SignUp = (props) => {
       })
       .then((res) => {
         console.log(res.data);
+        authCtx.login(res.data.token, res.data.exp, res.data.userId);
+        navigate("/");
       })
       .catch((error) => {
         if (error) {
-          console.log(error, "error during sign up")
-        } else {
-          navigate("/");
+          console.log(error, "error during sign up");
         }
       });
     setEmail("");
@@ -131,7 +134,7 @@ const SignUp = (props) => {
           className={styles.login_btn}
           id="login-screen"
           onClick={props.authScreenHandler}
-          type= "button"
+          type="button"
         >
           Login
         </button>

@@ -14,7 +14,7 @@ const createToken = (email, id) => {
     },
     SECRET,
     {
-      expiresIn: "20m",
+      expiresIn: "1d",
     }
   );
 };
@@ -40,10 +40,12 @@ module.exports = {
           newUser.dataValues.email,
           newUser.dataValues.id
         );
+        const exp = Date.now() + 1000 * 60 * 60 * 24;
         res.status(200).send({
           email: newUser.dataValues,
           userId: newUser.dataValues.id,
           token: token,
+          exp: exp,
         });
       }
     } catch (err) {
@@ -62,20 +64,22 @@ module.exports = {
             foundUser.dataValues.email,
             foundUser.dataValues.id
           );
+          const exp = Date.now() + 1000 * 60 * 60 * 24
           res.status(200).send({
             email: foundUser.dataValues.email,
             userId: foundUser.dataValues.id,
             token: token,
+            exp: exp,
           });
         } else {
-          res.status(401).send("Cannont login")
+          res.status(401).send("Cannont login");
         }
       } else {
-        res.status(400).send("No user found with that email")
+        res.status(400).send("No user found with that email");
       }
     } catch (err) {
-      console.log(err)
-      res.sendStatus(400)
+      console.log(err);
+      res.sendStatus(400);
     }
   },
 };
