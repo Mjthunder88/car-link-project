@@ -40,10 +40,10 @@ label {
 }
 
 .password_show {
-  border: solid .1rem;
+  border: solid 0.1rem;
   display: flex;
   align-items: center;
-  padding-right: .3rem;
+  padding-right: 0.3rem;
 }
 
 .show_button {
