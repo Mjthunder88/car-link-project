@@ -56,7 +56,7 @@ const Login = (props) => {
         <label htmlFor="email">Email</label>
         <input
           id="email"
-          type="text"
+          type="email"
           placeholder=" Enter your email"
           onChange={emailHandler}
           value={email}
@@ -98,7 +98,7 @@ const Login = (props) => {
         <button className={styles.login_btn} id="login-btn">
           Login
         </button>
-        <h4>Or</h4>
+        <h4>Need a new account?</h4>
         <button
           className={styles.signUp_btn}
           id="sign-up-screen"

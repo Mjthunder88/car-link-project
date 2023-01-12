@@ -6,6 +6,7 @@ import AuthContext from "./store/GlobalContext";
 
 import "./components/UI/stylesheet.css";
 
+import AddCarScreen from './screens/AddCarScreen';
 import AuthScreen from "./screens/AuthScreen";
 import HomeScreen from "./screens/HomeScreen";
 import Header from "./components/header/Header";
@@ -19,9 +20,12 @@ function App() {
     <div className="main">
       <Header />
       <Routes>
-        <Route path="*" element={<Navigate to='/auth' />} />
-        <Route path="/" element={authCtx.token ? <HomeScreen /> : <Navigate to='/auth' />} />
+        {/* <Route path="*" element={<Navigate to='/auth' />} /> [//! uncomment this line after dev] */}
+        <Route path="*" element={<Navigate to='/' />} /> [//! delete this line after dev]
+        {/* <Route path="/" element={authCtx.token ? <HomeScreen /> : <Navigate to='/auth' />} /> [//! uncomment this line after dev] */}
         <Route path="/auth" element={<AuthScreen />} />
+        <Route path="/" element={<HomeScreen />} /> [//! delete this line after dev]
+        <Route path='/add-car' element={<AddCarScreen />} />
       </Routes>
       <Footer />
     </div>

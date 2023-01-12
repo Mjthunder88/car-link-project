@@ -87,7 +87,7 @@ const SignUp = (props) => {
         <label htmlFor="email">Email</label>
         <input
           id="register-email"
-          type="text"
+          type="email"
           placeholder="Enter your email"
           onChange={emailHandler}
           value={email}
@@ -129,7 +129,7 @@ const SignUp = (props) => {
         <button className={styles.signUp_btn} id="sign-up-btn">
           Sign Up
         </button>
-        <h4>Or</h4>
+        <h4>Already have an account?</h4>
         <button
           className={styles.login_btn}
           id="login-screen"

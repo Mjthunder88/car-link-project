@@ -41,8 +41,8 @@ const Header = () => {
             <h3>Home</h3>
           </Link>
           {authCtx.token &&
-          <Link to="/" className={styles.header_link}>
-            <h3>Add Cars</h3>
+          <Link to="/add-car" className={styles.header_link}>
+            <h3>My Vehicles</h3>
           </Link>
           }
           {!authCtx.token && (
