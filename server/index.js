@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const server = express();
 
+const seed = require('./seed/seed')
+
 const db = require("./database");
 const {
   User,
@@ -59,9 +61,11 @@ server.post('/login', login)
 
 //! syncing for database below
 db
-.sync()
-// .sync({force: true})
-  .then(() => {})
+// .sync()
+.sync({force: true})
+  .then(() => {
+    seed()
+  })
   .catch((err) => {
     console.log(err);
   });
