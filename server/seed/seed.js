@@ -151,7 +151,7 @@ const make = [
 const seed = async () => {
     const {Manufacturer, Model} = require('../models/models')
     await Manufacturer.bulkCreate(make)
-    await Model.bulkCreate(models)
+    // await Model.bulkCreate(models)
     console.log("Seed Complete")
   }
 

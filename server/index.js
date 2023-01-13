@@ -19,6 +19,7 @@ server.use(express.json());
 server.use(cors());
 
 const { register, login } = require('./controllers/auth')
+const { getMake } = require('./controllers/make')
 
 
 
@@ -58,13 +59,14 @@ Car.belongsTo(User, {
 
 server.post('/register', register)
 server.post('/login', login)
+server.get('/get-makes', getMake)
 
 //! syncing for database below
 db
-// .sync()
-.sync({force: true})
+.sync()
+// .sync({force: true})
   .then(() => {
-    seed()
+    // seed()
   })
   .catch((err) => {
     console.log(err);

@@ -57,3 +57,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+select {
+  min-height: 2rem;
+  padding:  0 1rem;
+  background-color: #f6fff8;
+  border: none;
+  border-radius: 1rem;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -6,11 +6,11 @@ import styles from "./AddCarModal.module.css";
 
 import { VscClose } from "react-icons/vsc";
 
-const AddCarModal = ({ addModalHandler }) => {
+const AddCarModal = ({ addModalHandler, makeArr }) => {
   const [year, setYear] = useState(2022);
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
-  const [mileage, setMileage] = useState(0);
+  const [mileage, setMileage] = useState("");
   const [vin, setVin] = useState("");
   const [transmissionType, setTransmissionType] = useState("Automatic");
 
@@ -20,9 +20,6 @@ const AddCarModal = ({ addModalHandler }) => {
   const makeHandler = (e) => {
     setMake(e.target.value);
   };
-  const modelHandler = (e) => {
-    setModel(e.target.value);
-  };
   const mileageHandler = (e) => {
     setMileage(e.target.value);
   };
@@ -31,6 +28,10 @@ const AddCarModal = ({ addModalHandler }) => {
   };
   const transmissionHandler = (e) => {
     setTransmissionType(e.target.value);
+  };
+
+  const modelHandler = (e) => {
+    setModel(e.target.value);
   };
 
   const formSubmitHandler = (e) => {
@@ -43,6 +44,14 @@ const AddCarModal = ({ addModalHandler }) => {
         console.log(err);
       });
   };
+
+  const options = makeArr.map((element, index) => {
+    return (
+      <option value={element.name} key={index}>
+        {element.name}
+      </option>
+    );
+  });
 
   return (
     <div className={styles.modal}>
@@ -62,10 +71,20 @@ const AddCarModal = ({ addModalHandler }) => {
           min="1900"
           required
           onChange={yearHandler}
-          value={year}
         />
-        <select name="make" id="make"></select>
-        <select name="model" id="model"></select>
+        <div className={styles.select_wrapper}>
+          <label htmlFor="make">Make: </label>
+          <select name="make" id="make">
+            {options}
+          </select>
+        </div>
+        <input
+          type="text"
+          placeholder="Enter Model"
+          required
+          onChange={modelHandler}
+          value={model}
+        />
         <input
           type="number"
           placeholder="Enter Mileage"

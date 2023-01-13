@@ -81,3 +81,12 @@
     width: 75%;
 }
 
+.select_wrapper {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
