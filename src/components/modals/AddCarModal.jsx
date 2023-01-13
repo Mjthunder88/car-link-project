@@ -8,14 +8,14 @@ import styles from "./AddCarModal.module.css";
 
 import { VscClose } from "react-icons/vsc";
 
-const AddCarModal = ({ addModalHandler, makeArr }) => {
-  const authCtx = useContext()
+const AddCarModal = ({ addModalHandler, makeArr}) => {
+  const authCtx = useContext(AuthContext);
   const [year, setYear] = useState(2022);
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [mileage, setMileage] = useState("");
   const [vin, setVin] = useState("");
-  const [transmissionType, setTransmissionType] = useState("Automatic");
+  const [transmission, setTransmission] = useState("Automatic");
 
   const yearHandler = (e) => {
     setYear(e.target.value);
@@ -30,7 +30,7 @@ const AddCarModal = ({ addModalHandler, makeArr }) => {
     setVin(e.target.value);
   };
   const transmissionHandler = (e) => {
-    setTransmissionType(e.target.value);
+    setTransmission(e.target.value);
   };
 
   const modelHandler = (e) => {
@@ -45,20 +45,24 @@ const AddCarModal = ({ addModalHandler, makeArr }) => {
         year,
         mileage,
         vin,
-        transmissionType,
+        transmission,
         make,
         model,
-        userId: authCtx.userId
+        userId: authCtx.userId,
       })
-      .then(() => {})
+      .then((res) => {
+        console.log(res.data);
+        addModalHandler();
+      })
       .catch((err) => {
         console.log(err);
       });
   };
 
   const options = makeArr.map((element, index) => {
+    let newIndex = index + 1;
     return (
-      <option value={element.name} key={index}>
+      <option value={newIndex} key={index}>
         {element.name}
       </option>
     );
@@ -85,7 +89,7 @@ const AddCarModal = ({ addModalHandler, makeArr }) => {
         />
         <div className={styles.select_wrapper}>
           <label htmlFor="make">Make: </label>
-          <select name="make" id="make">
+          <select name="make" id="make" onChange={makeHandler}>
             {options}
           </select>
         </div>

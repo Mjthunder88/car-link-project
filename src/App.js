@@ -20,12 +20,12 @@ function App() {
     <div className="main">
       <Header />
       <Routes>
-        {/* <Route path="*" element={<Navigate to='/auth' />} /> [//! uncomment this line after dev] */}
-        <Route path="*" element={<Navigate to='/' />} /> [//! delete this line after dev]
-        {/* <Route path="/" element={authCtx.token ? <HomeScreen /> : <Navigate to='/auth' />} /> [//! uncomment this line after dev] */}
+        <Route path="*" element={<Navigate to='/auth' />} /> [//! uncomment this line after dev]
+        {/* <Route path="*" element={<Navigate to='/' />} /> [//! delete this line after dev] */}
+        <Route path="/" element={authCtx.token ? <HomeScreen /> : <Navigate to='/auth' />} /> [//! uncomment this line after dev]
         <Route path="/auth" element={<AuthScreen />} />
-        <Route path="/" element={<HomeScreen />} /> [//! delete this line after dev]
-        <Route path='/add-car' element={<AddCarScreen />} />
+        {/* <Route path="/" element={<HomeScreen />} /> [//! delete this line after dev] */}
+        <Route path='/add-car' element={authCtx.token ? <AddCarScreen /> : <Navigate to='auth' />} />
       </Routes>
       <Footer />
     </div>

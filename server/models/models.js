@@ -57,7 +57,7 @@ module.exports = {
       type: DataTypes.STRING({ length: 9 }),
       allowNull: false,
     },
-    make: {
+    model: {
       type: DataTypes.STRING(),
       allowNull: false
     }

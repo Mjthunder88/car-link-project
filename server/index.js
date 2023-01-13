@@ -20,6 +20,7 @@ server.use(cors());
 
 const { register, login } = require('./controllers/auth')
 const { getMake } = require('./controllers/make')
+const { addVehicle } = require('./controllers/addVehicle')
 
 
 
@@ -60,6 +61,7 @@ Car.belongsTo(User, {
 server.post('/register', register)
 server.post('/login', login)
 server.get('/get-makes', getMake)
+server.post('/add-vehicle', addVehicle)
 
 //! syncing for database below
 db

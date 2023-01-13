@@ -18,14 +18,16 @@ const AddCarScreen = () => {
       .get("/get-makes")
       .then((res) => {
         console.log(res.data);
-        setMakeArr(res.data)
+        setMakeArr(res.data);
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <div className={styles.main}>
-      {addVehicleModal && <AddCarModal addModalHandler={addModalHandler} makeArr={makeArr} />}
+      {addVehicleModal && (
+        <AddCarModal addModalHandler={addModalHandler} makeArr={makeArr} />
+      )}
       <button
         className={addVehicleModal ? styles.remove_hover : styles.add_btn}
         onClick={addModalHandler}
