@@ -23,27 +23,27 @@ const { getMake } = require('./controllers/make')
 
 
 
-Manufacturer.hasMany(Model, {
-    foreignKey: {
-        allowNull: false
-    }
-});
-Model.belongsTo(Manufacturer, {
-    foreignKey: {
-        allowNull: false
-    }
-});
+// Manufacturer.hasMany(Model, {
+//     foreignKey: {
+//         allowNull: false
+//     }
+// });
+// Model.belongsTo(Manufacturer, {
+//     foreignKey: {
+//         allowNull: false
+//     }
+// });
 
 Car.belongsTo(Manufacturer, {
     foreignKey: {
         allowNull: false
     }
 });
-Car.belongsTo(Model, {
-    foreignKey: {
-        allowNull: false
-    }
-});
+// Car.belongsTo(Model, {
+//     foreignKey: {
+//         allowNull: false
+//     }
+// });
 User.hasMany(Car, {
     foreignKey: {
         allowNull: false

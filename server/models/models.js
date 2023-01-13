@@ -57,6 +57,10 @@ module.exports = {
       type: DataTypes.STRING({ length: 9 }),
       allowNull: false,
     },
+    make: {
+      type: DataTypes.STRING(),
+      allowNull: false
+    }
   }),
   Model: db.define("model", {
     id: {

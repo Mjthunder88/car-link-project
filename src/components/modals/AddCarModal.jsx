@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import axios from "axios";
+
+import AuthContext from "../../store/GlobalContext";
 
 import styles from "./AddCarModal.module.css";
 
 import { VscClose } from "react-icons/vsc";
 
 const AddCarModal = ({ addModalHandler, makeArr }) => {
+  const authCtx = useContext()
   const [year, setYear] = useState(2022);
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
@@ -38,7 +41,15 @@ const AddCarModal = ({ addModalHandler, makeArr }) => {
     e.preventDefault();
 
     axios
-      .post("/add-vehicle", {})
+      .post("/add-vehicle", {
+        year,
+        mileage,
+        vin,
+        transmissionType,
+        make,
+        model,
+        userId: authCtx.userId
+      })
       .then(() => {})
       .catch((err) => {
         console.log(err);
