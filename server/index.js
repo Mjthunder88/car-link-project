@@ -21,6 +21,7 @@ server.use(cors());
 const { register, login } = require('./controllers/auth')
 const { getMake } = require('./controllers/make')
 const { addVehicle } = require('./controllers/addVehicle')
+const { displayVehicles } = require('./controllers/displayVehicles')
 
 
 
@@ -62,6 +63,7 @@ server.post('/register', register)
 server.post('/login', login)
 server.get('/get-makes', getMake)
 server.post('/add-vehicle', addVehicle)
+server.get('/get-vehicles/:userId', displayVehicles)
 
 //! syncing for database below
 db

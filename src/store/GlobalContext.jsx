@@ -42,11 +42,11 @@ export const GlobalContextProvider = (props) => {
     initalToken = localData.token;
   }
 
-  const [token, setTokem] = useState(initalToken);
+  const [token, setToken] = useState(initalToken);
   const [userId, setUserId] = useState(null);
 
   const logout = () => {
-    setTokem(null);
+    setToken(null);
     setUserId(null);
 
     localStorage.removeItem("token");
@@ -58,8 +58,8 @@ export const GlobalContextProvider = (props) => {
   };
 
   const login = (token, expirationTime, userId) => {
-    setTokem(token);
-    // console.log(token)
+    setToken(token);
+    console.log(token, 'token here')
     setUserId(userId);
     localStorage.setItem("token", token);
     localStorage.setItem("userId", userId);
