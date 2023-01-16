@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 import AuthContext from "../../store/GlobalContext";
@@ -10,8 +12,12 @@ import { AiOutlineCar } from "react-icons/ai";
 
 const CarCard = () => {
   const [vehicles, setVehicles] = useState([]);
-
+  const navigate = useNavigate()
   const authCtx = useContext(AuthContext);
+
+  const detailsScreenHandler = () => {
+    navigate('/details')
+  }
 
   useEffect(() => {
     const fetchUserVehilce = async () => {
@@ -36,7 +42,7 @@ const CarCard = () => {
         <h3>{element.model}</h3>
       </div>
       <AiOutlineCar size="4rem" className={styles.icon} />
-      <button className={styles.details_btn}>View Details</button>
+      <button className={styles.details_btn} onClick={detailsScreenHandler} key={index}>View Details</button>
     </div>
     )
   })
