@@ -20,6 +20,7 @@ const CarCard = () => {
     axios.get(`/vehicle-maintenance/${idRef.current.id}`)
     .then((res) => {
       console.log(res.data)
+      authCtx.displayCarHandler(res.data)
 
       navigate('/details')
     })

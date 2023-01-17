@@ -7,6 +7,8 @@ const AuthContext = createContext({
   login: () => {},
   logout: () => {},
   userId: null,
+  currentCar: [],
+  displayCarHandler: () => {},
 });
 
 const calculateRemainingTime = (exp) => {
@@ -44,6 +46,7 @@ export const GlobalContextProvider = (props) => {
 
   const [token, setToken] = useState(initalToken);
   const [userId, setUserId] = useState(null);
+  const [currentCar, setCurrentCar] = useState("")
 
   const logout = () => {
     setToken(null);
@@ -69,11 +72,18 @@ export const GlobalContextProvider = (props) => {
     logoutTimer = setTimeout(logout, remainingTime);
   };
 
+  const displayCarHandler = (car) => {
+    console.log(car)
+    setCurrentCar(car)
+  }
+
   const contextValues = {
     token,
     login,
     logout,
     userId,
+    currentCar,
+    displayCarHandler,
   };
 
   return (

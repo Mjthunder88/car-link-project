@@ -24,6 +24,8 @@ const { getMake } = require('./controllers/make')
 const { addVehicle } = require('./controllers/addVehicle')
 const { displayVehicles } = require('./controllers/displayVehicles')
 const { getVehicle } = require('./controllers/maintenance')
+const { addMaintenance } = require('./controllers/maintenance')
+const { services } = require('./controllers/maintenance')
 
 
 
@@ -77,6 +79,8 @@ server.get('/get-makes', getMake)
 server.post('/add-vehicle', addVehicle)
 server.get('/get-vehicles/:userId', displayVehicles)
 server.get('/vehicle-maintenance/:carId', getVehicle)
+server.post('/add-maintenance/:carId', addMaintenance)
+server.get('/get-services/:carId', services)
 
 //! syncing for database below
 db
