@@ -59,8 +59,8 @@ module.exports = {
     },
     model: {
       type: DataTypes.STRING(),
-      allowNull: false
-    }
+      allowNull: false,
+    },
   }),
   Model: db.define("model", {
     id: {
@@ -86,6 +86,30 @@ module.exports = {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+  }),
+  Maintenance: db.define("maintenance", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+    },
+    service: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    mileage: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    details: {
+      type: DataTypes.STRING(),
+      allowNull: true,
     },
   }),
 };

@@ -11,6 +11,7 @@ const {
   Car,
   Model,
   Manufacturer,
+  Maintenance
 } = require("./models/models");
 
 const { SERVER_PORT } = process.env;
@@ -22,6 +23,7 @@ const { register, login } = require('./controllers/auth')
 const { getMake } = require('./controllers/make')
 const { addVehicle } = require('./controllers/addVehicle')
 const { displayVehicles } = require('./controllers/displayVehicles')
+const { getVehicle } = require('./controllers/maintenance')
 
 
 
@@ -56,6 +58,16 @@ Car.belongsTo(User, {
         allowNull: false
     }
 });
+Car.hasMany(Maintenance, {
+  foreignKey: {
+    allowNull: false
+  }
+})
+Maintenance.belongsTo(Car, {
+  foreignKey: {
+    allowNull: false
+  } 
+})
 
 //! Endpoints below
 
@@ -64,6 +76,7 @@ server.post('/login', login)
 server.get('/get-makes', getMake)
 server.post('/add-vehicle', addVehicle)
 server.get('/get-vehicles/:userId', displayVehicles)
+server.get('/vehicle-maintenance/:carId', getVehicle)
 
 //! syncing for database below
 db

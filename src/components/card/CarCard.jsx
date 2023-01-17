@@ -1,28 +1,37 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import AuthContext from "../../store/GlobalContext";
-
 import styles from "./CarCard.module.css";
 
 import { AiOutlineCar } from "react-icons/ai";
 
+import AuthContext from "../../store/GlobalContext";
+
 const CarCard = () => {
   const [vehicles, setVehicles] = useState([]);
+  const authCtx = useContext(AuthContext)
   const navigate = useNavigate()
-  const authCtx = useContext(AuthContext);
+  const idRef = useRef()
 
-  const detailsScreenHandler = () => {
-    navigate('/details')
+  const detailsScreenHandler =  async () => {
+    axios.get(`/vehicle-maintenance/${idRef.current.id}`)
+    .then((res) => {
+      console.log(res.data)
+
+      navigate('/details')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   useEffect(() => {
     const fetchUserVehilce = async () => {
       await axios
-        .get(`./get-vehicles/${authCtx.userId}`)
+        .get(`/get-vehicles/${authCtx.userId}`)
         .then((res) => {
           console.log(res.data);
           setVehicles(res.data);
@@ -31,7 +40,6 @@ const CarCard = () => {
     };
     fetchUserVehilce();
   }, [authCtx.userId]);
-  console.log(vehicles)
 
   const list = vehicles.map((element, index) => {
     return (
@@ -42,14 +50,14 @@ const CarCard = () => {
         <h3>{element.model}</h3>
       </div>
       <AiOutlineCar size="4rem" className={styles.icon} />
-      <button className={styles.details_btn} onClick={detailsScreenHandler} key={index}>View Details</button>
+      <button className={styles.details_btn} onClick={detailsScreenHandler} key={index} ref={idRef} id={element.id}>View Details</button>
     </div>
     )
   })
 
   return (
     <>
-    {list}
+     {list}
     </>
   );
 };

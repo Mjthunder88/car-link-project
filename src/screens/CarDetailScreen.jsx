@@ -1,21 +1,35 @@
-import React from 'react'
+import React, {useContext} from "react";
 
-import styles from '../components/UI/CarDetailScreen.module.css'
+import AuthContext from "../store/GlobalContext";
 
-import CarCard from '../components/card/CarCard'
+import { useNavigate } from "react-router-dom";
+
+import styles from "../components/UI/CarDetailScreen.module.css";
 
 const CarDetailScreen = () => {
+  const authCtx = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const backBtnHandler = () => {
+    navigate('/add-car')
+  }
+
+
+ 
+
   return (
     <div className={styles.main}>
-        <section>
-        <h1>Details</h1>
-
-        </section>
-        <section>
-
-        </section>
+      <div className={styles.backBtn_container}>
+        <button className={styles.back_btn} onClick={backBtnHandler}>
+          Back
+        </button>
+      </div>
+      <section>
+        <h1>Maintenance</h1>
+      </section>
+      <section></section>
     </div>
-  )
-}
+  );
+};
 
-export default CarDetailScreen
+export default CarDetailScreen;

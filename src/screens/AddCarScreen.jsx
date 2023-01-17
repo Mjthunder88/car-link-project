@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import styles from "../components/UI/AddCarScreen.module.css";
 
 import CarCard from "../components/card/CarCard";
 import AddCarModal from "../components/modals/AddCarModal";
+import AuthContext from "../store/GlobalContext";
 
 import axios from "axios";
 
 const AddCarScreen = () => {
   const [addVehicleModal, setAddVehicleModal] = useState(false);
   const [makeArr, setMakeArr] = useState([]);
+  const authCtx = useContext(AuthContext)
 
   const addModalHandler = () => {
     setAddVehicleModal(!addVehicleModal);

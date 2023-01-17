@@ -59,7 +59,7 @@ export const GlobalContextProvider = (props) => {
 
   const login = (token, expirationTime, userId) => {
     setToken(token);
-    console.log(token, 'token here')
+    console.log(token, "token here");
     setUserId(userId);
     localStorage.setItem("token", token);
     localStorage.setItem("userId", userId);
