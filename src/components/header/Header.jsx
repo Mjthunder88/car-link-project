@@ -37,31 +37,51 @@ const Header = () => {
         <div
           className={!isActive ? styles.drop_down : styles.drop_down_displayed}
         >
-          <Link to="/" className={styles.header_link}>
+          <Link to="/" className={styles.header_link} onClick={toggleMenu}>
             <h3>Home</h3>
           </Link>
-          {authCtx.token &&
-          <Link to="/add-car" className={styles.header_link}>
-            <h3>My Vehicles</h3>
-          </Link>
-          }
+          {authCtx.token && (
+            <Link
+              to="/add-car"
+              className={styles.header_link}
+              onClick={toggleMenu}
+            >
+              <h3>My Vehicles</h3>
+            </Link>
+          )}
           {!authCtx.token && (
-            <Link to="/about" className={styles.header_link}>
+            <Link
+              to="/about"
+              className={styles.header_link}
+              onClick={toggleMenu}
+            >
               <h3>About Linked</h3>
             </Link>
           )}
           {!authCtx.token && (
-            <Link to="/contact" className={styles.header_link}>
+            <Link
+              to="/contact"
+              className={styles.header_link}
+              onClick={toggleMenu}
+            >
               <h3>Contact</h3>
             </Link>
           )}
           {authCtx.token && (
-            <Link to="/settings" className={styles.header_link}>
+            <Link
+              to="/settings"
+              className={styles.header_link}
+              onClick={toggleMenu}
+            >
               <h3>Settings</h3>
             </Link>
           )}
           {authCtx.token && (
-            <Link to="/auth" className={styles.header_link}>
+            <Link
+              to="/auth"
+              className={styles.header_link}
+              onClick={toggleMenu}
+            >
               <button onClick={authCtx.logout}>Logout</button>
             </Link>
           )}
