@@ -38,7 +38,6 @@ const AddCarModal = ({ addModalHandler, makeArr}) => {
   };
 
   const formSubmitHandler = (e) => {
-    // e.preventDefault();
 
     axios
       .post("/add-vehicle", {

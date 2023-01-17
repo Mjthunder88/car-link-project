@@ -14,8 +14,9 @@
     padding: 2rem 8rem;
     gap: 2rem;
     border-radius: 1rem;
-    max-width: 50rem;
-    min-width: 40rem;
+    max-width: 70vw;
+    min-width: 30vw;
+    width: 50vw;
 }
 
 .icon {

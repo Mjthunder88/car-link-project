@@ -4,6 +4,7 @@ module.exports = {
     displayVehicles: async (req, res) => {
         try {
             const {userId} = req.params
+            console.log(userId, "-----------HERE_-----------")
             const vehicles = await Car.findAll({
                 include: [{
                     model: Manufacturer,

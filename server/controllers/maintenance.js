@@ -12,7 +12,6 @@ module.exports = {
         ],
         where: { id: carId },
       });
-      //   console.log(vehicle, " ---------------HERE------------");
       if (vehicle) {
         res.status(200).send(vehicle);
       } else {
@@ -26,13 +25,12 @@ module.exports = {
   addMaintenance: async (req, res) => {
     const { service, date, mileage, notes } = req.body;
     const { carId } = req.params;
-    console.log(carId, "---------HERE_---------------");
     try {
       const maintenance = await Maintenance.create({
         service,
         date,
         mileage,
-        notes,
+        details: notes,
         carId,
       });
       res.status(200).send(maintenance);
@@ -43,8 +41,8 @@ module.exports = {
   services: async (req, res) => {
     try {
       const { carId } = req.params;
+      console.log(carId, 'HERER IN maintenance')
       const serviceList = await Maintenance.findAll({ where: { carId: carId } });
-      console.log(serviceList, "---------HERE-------");
       res.status(200).send(serviceList);
     } catch (err) {
       console.log(err);

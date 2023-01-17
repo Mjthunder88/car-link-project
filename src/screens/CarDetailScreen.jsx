@@ -22,21 +22,8 @@ const CarDetailScreen = () => {
     navigate("/add-car");
   };
 
-  const serviceHandler = (e) => {
-    setService(e.target.value);
-  };
-  const dateHandler = (e) => {
-    setDate(e.target.value);
-  };
-  const mileageHandler = (e) => {
-    setMileage(e.target.value);
-  };
-  const notesHandler = (e) => {
-    setNotes(e.target.value);
-  };
-
   const formHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     axios
       .post(`/add-maintenance/${authCtx.currentCar.id}`, {
@@ -47,39 +34,43 @@ const CarDetailScreen = () => {
       })
       .then((res) => {
         console.log(res.data);
+        setService("");
+        setDate("");
+        setMileage("");
+        setNotes("");
+        list()
         
       })
       .catch((err) => {
         console.log(err);
       });
-    setService("");
-    setDate("");
-    setMileage("");
-    setNotes("");
+  
   };
 
+  const list = async () => {
+    await axios.get(`/get-services/${authCtx.currentCar.id}`)
+    .then((res) => {
+      console.log(res.data)
+      setMaintenanceList(res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   useEffect(() => {
-    const list = async () => {
-      await axios.get(`/get-services/${authCtx.currentCar.id}`)
-      .then((res) => {
-        console.log(res.data)
-        setMaintenanceList(res.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    }
+    
     list()
-  }, [authCtx.currentCar.id])
+  }, [])
 
   const serviceList = maintenanceList.map((element, index) => {
     return (
       <tbody key={index}>
-      <tr key={index}>
-        <td key={index}>{element.service}</td>
-        <td key={index}>{element.date}</td>
-        <td key={index}>{element.mileage}</td>
-        <td key={index}>{element.notes}</td>
+      <tr key={index} className={ index % 2 === 0 ? `${styles.table_row}` : `${styles.table_row_2}`}>
+        <td>{element.service}</td>
+        <td>{element.date}</td>
+        <td>{element.mileage}</td>
+        <td>{element.details}</td>
       </tr>
       </tbody>
     );
@@ -116,7 +107,7 @@ const CarDetailScreen = () => {
               className={styles.maintenance_input}
               required
               value={service}
-              onChange={serviceHandler}
+              onChange={(e) => setService(e.target.value)}
             />
             <input
               type="date"
@@ -125,7 +116,7 @@ const CarDetailScreen = () => {
               className={styles.maintenance_input}
               required
               value={date}
-              onChange={dateHandler}
+              onChange={(e) => setDate(e.target.value)}
             />
             <input
               type="number"
@@ -134,7 +125,7 @@ const CarDetailScreen = () => {
               className={styles.maintenance_input}
               required
               value={mileage}
-              onChange={mileageHandler}
+              onChange={(e) => setMileage(e.target.value)}
             />
             <input
               type="text"
@@ -142,17 +133,19 @@ const CarDetailScreen = () => {
               placeholder="Notes"
               className={styles.maintenance_input}
               value={notes}
-              onChange={notesHandler}
+              onChange={(e) => setNotes(e.target.value)}
             />
           </div>
         </form>
           <table className={styles.log_details}>
-            <tr>
-              <th>Service</th>
-              <th>Date</th>
-              <th>Mileage</th>
-              <th>Notes</th>
+            <thead className={styles.table_heading_container}>
+            <tr className={styles.heading_row}>
+              <th className={styles.th_headers}>Service</th>
+              <th className={styles.th_headers}>Date</th>
+              <th className={styles.th_headers}>Mileage</th>
+              <th className={styles.th_headers}>Notes</th>
             </tr>
+            </thead>
             {serviceList}
           </table>
       </section>

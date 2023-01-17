@@ -40,13 +40,14 @@
     background-color: #6b9080;
     color: #f6fff8;
     border-radius: 1rem;
-    width: 30vw;
+    width: 70vw;
     height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    font-size: 1.5rem;
 }
 
 .inner_bottom {
@@ -57,7 +58,6 @@
 
 .log_container {
     width: 70vw;
-    height: 70vh;
     padding: 1rem;
     border: #6b9080 solid .3rem;
     border-radius: 1rem;
@@ -108,7 +108,41 @@
 
 .log_details {
     display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+    flex-direction: column;
     padding-top: 1rem;
+    width: 100%;
 }
+
+.th_headers {
+    font-size: 1.1rem;
+}
+
+
+.table_row {
+    display: flex;
+    justify-content: space-around;
+    background-color: #6b9080;
+    padding: 1rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.table_row_2 {
+    display: flex;
+    justify-content: space-around;
+    background-color: #cce3de;
+    padding: 1rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.heading_row {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+td {
+    flex-basis: 15%;
+}
+
