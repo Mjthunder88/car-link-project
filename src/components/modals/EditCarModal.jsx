@@ -1,53 +1,6 @@
-import React, { useState, useContext } from "react";
+import React from 'react'
 
-import axios from "axios";
-
-import AuthContext from "../../store/GlobalContext";
-
-import styles from "./AddCarModal.module.css";
-
-import { VscClose } from "react-icons/vsc";
-
-const AddCarModal = ({ addModalHandler, makeArr }) => {
-  const authCtx = useContext(AuthContext);
-  const [year, setYear] = useState(2023);
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [mileage, setMileage] = useState("");
-  const [vin, setVin] = useState("");
-  const [transmission, setTransmission] = useState("Automatic");
-
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-
-    axios
-      .post("/add-vehicle", {
-        year,
-        mileage,
-        vin,
-        transmission,
-        make,
-        model,
-        userId: authCtx.userId,
-      })
-      .then((res) => {
-        console.log(res.data);
-        addModalHandler();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const options = makeArr.map((element, index) => {
-    let newIndex = index + 1;
-    return (
-      <option value={newIndex} key={index}>
-        {element.name}
-      </option>
-    );
-  });
-
+const EditCarModal = () => {
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}></div>
@@ -127,7 +80,7 @@ const AddCarModal = ({ addModalHandler, makeArr }) => {
         <button className={styles.submit_vehicle}>Add Vehicle</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddCarModal;
+export default EditCarModal

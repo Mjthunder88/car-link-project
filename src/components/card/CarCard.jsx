@@ -28,19 +28,22 @@ const CarCard = () => {
     })
   }
 
+  const fetchUserVehilce = async () => {
+    await axios
+      .get(`/get-vehicles/${localStorage.userId}`)
+      .then((res) => {
+        console.log(res.data);
+        setVehicles(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  
+
 
   useEffect(() => {
-    const fetchUserVehilce = async () => {
-      await axios
-        .get(`/get-vehicles/${localStorage.userId}`)
-        .then((res) => {
-          console.log(res.data);
-          setVehicles(res.data);
-        })
-        .catch((err) => console.log(err));
-    };
+  
     fetchUserVehilce();
-  }, [authCtx.userId]);
+  }, []);
 
   const list = vehicles.map((element, index) => {
     return (

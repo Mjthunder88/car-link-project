@@ -40,7 +40,7 @@
     background-color: #6b9080;
     color: #f6fff8;
     border-radius: 1rem;
-    width: 70vw;
+    width: 80vw;
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
 }
 
 .log_container {
-    width: 70vw;
+    width: 80vw;
     padding: 1rem;
     border: #6b9080 solid .3rem;
     border-radius: 1rem;
@@ -142,7 +142,46 @@
     padding: 1rem 0;
 }
 
-td {
-    flex-basis: 15%;
+p {
+    flex-basis: 10%;
+}
+
+.edit_btn {
+    color: #cce3de;
+    transition: all .2s ease-in-out;
+    position: relative;
+    bottom: 1rem;
+}
+
+.edit_btn:hover {
+    color: black;
+}
+
+.edit_services {
+    color:#cce3de;
+    transition: all .2s ease-in-out;
+    margin-left: -6rem;
+    margin-right: -6rem;
+}
+
+.edit_services_2 {
+    color: #6b9080;
+    transition: all .2s ease-in-out;
+    margin-left: -6rem;
+    margin-right: -6rem;
+}
+
+.edit_services:hover {
+    color: black;
+}
+.edit_services_2:hover {
+    color: black;
+}
+
+.edit_container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 2rem;
 }
 

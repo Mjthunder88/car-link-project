@@ -7,6 +7,7 @@ import AuthContext from "../store/GlobalContext";
 import { useNavigate } from "react-router-dom";
 
 import styles from "../components/UI/CarDetailScreen.module.css";
+import { BiMessageAltEdit } from "react-icons/bi";
 
 const CarDetailScreen = () => {
   const authCtx = useContext(AuthContext);
@@ -16,7 +17,7 @@ const CarDetailScreen = () => {
   const [date, setDate] = useState("");
   const [mileage, setMileage] = useState("");
   const [notes, setNotes] = useState("");
-  const [maintenanceList, setMaintenanceList] = useState([])
+  const [maintenanceList, setMaintenanceList] = useState([]);
 
   const backBtnHandler = () => {
     navigate("/add-car");
@@ -38,41 +39,45 @@ const CarDetailScreen = () => {
         setDate("");
         setMileage("");
         setNotes("");
-        list()
-        
+        list();
       })
       .catch((err) => {
         console.log(err);
       });
-  
   };
 
   const list = async () => {
-    await axios.get(`/get-services/${authCtx.currentCar.id}`)
-    .then((res) => {
-      console.log(res.data)
-      setMaintenanceList(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
+    await axios
+      .get(`/get-services/${authCtx.currentCar.id}`)
+      .then((res) => {
+        console.log(res.data);
+        setMaintenanceList(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
-    
-    list()
-  }, [])
+    list();
+  }, []);
 
   const serviceList = maintenanceList.map((element, index) => {
     return (
-      <tbody key={index}>
-      <tr key={index} className={ index % 2 === 0 ? `${styles.table_row}` : `${styles.table_row_2}`}>
-        <td>{element.service}</td>
-        <td>{element.date}</td>
-        <td>{element.mileage}</td>
-        <td>{element.details}</td>
-      </tr>
-      </tbody>
+      <div key={index}>
+        <div
+          key={index}
+          className={
+            index % 2 === 0 ? `${styles.table_row}` : `${styles.table_row_2}`
+          }
+        >
+          <p>{element.service}</p>
+          <p>{element.date}</p>
+          <p>{element.mileage}</p>
+          <p>{element.details}</p>
+          <BiMessageAltEdit size="1.5rem" className={index % 2 === 0 ? `${styles.edit_services}` : `${styles.edit_services_2}`} />
+        </div>
+      </div>
     );
   });
 
@@ -84,14 +89,14 @@ const CarDetailScreen = () => {
         </button>
       </div>
       <section className={styles.heading}>
+        <div className={styles.edit_container}>
+        <BiMessageAltEdit size="2rem" className={styles.edit_btn} />
+        </div>
         <h1>Maintenance</h1>
-        {/* <h1>{authCtx.currentCar.year}</h1>
-        <h1>{authCtx.currentCar.manufacturer.name}</h1>
-        <h1>{authCtx.currentCar.model}</h1> */}
         <div className={styles.inner_bottom}>
-          <h1>2016</h1>
-          <h1>Toyota</h1>
-          <h1>Corolla</h1>
+          <h1>{authCtx.currentCar.year}</h1>
+          <h1>{authCtx.currentCar.manufacturer.name}</h1>
+          <h1>{authCtx.currentCar.model}</h1>
         </div>
       </section>
       <section className={styles.log_container}>
@@ -137,17 +142,17 @@ const CarDetailScreen = () => {
             />
           </div>
         </form>
-          <table className={styles.log_details}>
-            <thead className={styles.table_heading_container}>
-            <tr className={styles.heading_row}>
-              <th className={styles.th_headers}>Service</th>
-              <th className={styles.th_headers}>Date</th>
-              <th className={styles.th_headers}>Mileage</th>
-              <th className={styles.th_headers}>Notes</th>
-            </tr>
-            </thead>
-            {serviceList}
-          </table>
+        <section className={styles.log_details}>
+          <div className={styles.table_heading_container}>
+            <div className={styles.heading_row}>
+              <h3 className={styles.th_headers}>Service</h3>
+              <h3 className={styles.th_headers}>Date</h3>
+              <h3 className={styles.th_headers}>Mileage</h3>
+              <h3 className={styles.th_headers}>Notes</h3>
+            </div>
+          </div>
+          {serviceList}
+        </section>
       </section>
     </div>
   );
