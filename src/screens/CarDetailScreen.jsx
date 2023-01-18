@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-
 import axios from "axios";
 
 import AuthContext from "../store/GlobalContext";
+import EditCarModal from "../components/modals/EditCarModal";
 
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +18,12 @@ const CarDetailScreen = () => {
   const [mileage, setMileage] = useState("");
   const [notes, setNotes] = useState("");
   const [maintenanceList, setMaintenanceList] = useState([]);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [makeArr, setMakearr] = useState([])
+
+  const editModalHandler = async () => {
+    setShowEditModal(!showEditModal);
+  };
 
   const backBtnHandler = () => {
     navigate("/add-car");
@@ -60,6 +66,13 @@ const CarDetailScreen = () => {
 
   useEffect(() => {
     list();
+    axios
+        .get("/get-makes")
+        .then((res) => {
+          console.log(res.data);
+          setMakearr(res.data)
+        })
+        .catch((err) => console.log(err));
   }, []);
 
   const serviceList = maintenanceList.map((element, index) => {
@@ -75,7 +88,14 @@ const CarDetailScreen = () => {
           <p>{element.date}</p>
           <p>{element.mileage}</p>
           <p>{element.details}</p>
-          <BiMessageAltEdit size="1.5rem" className={index % 2 === 0 ? `${styles.edit_services}` : `${styles.edit_services_2}`} />
+          <BiMessageAltEdit
+            size="1.5rem"
+            className={
+              index % 2 === 0
+                ? `${styles.edit_services}`
+                : `${styles.edit_services_2}`
+            }
+          />
         </div>
       </div>
     );
@@ -90,7 +110,7 @@ const CarDetailScreen = () => {
       </div>
       <section className={styles.heading}>
         <div className={styles.edit_container}>
-        <BiMessageAltEdit size="2rem" className={styles.edit_btn} />
+          <BiMessageAltEdit size="2rem" className={styles.edit_btn} onClick={editModalHandler} />
         </div>
         <h1>Maintenance</h1>
         <div className={styles.inner_bottom}>
@@ -154,6 +174,7 @@ const CarDetailScreen = () => {
           {serviceList}
         </section>
       </section>
+      {showEditModal && <EditCarModal editModalHandler={editModalHandler} makeArr={makeArr} />}
     </div>
   );
 };

@@ -26,6 +26,7 @@ const { displayVehicles } = require('./controllers/displayVehicles')
 const { getVehicle } = require('./controllers/maintenance')
 const { addMaintenance } = require('./controllers/maintenance')
 const { services } = require('./controllers/maintenance')
+const { remove } = require('./controllers/deleteVehicle')
 
 
 
@@ -75,12 +76,18 @@ Maintenance.belongsTo(Car, {
 
 server.post('/register', register)
 server.post('/login', login)
+
 server.get('/get-makes', getMake)
+
 server.post('/add-vehicle', addVehicle)
 server.get('/get-vehicles/:userId', displayVehicles)
+
 server.get('/vehicle-maintenance/:carId', getVehicle)
 server.post('/add-maintenance/:carId', addMaintenance)
 server.get('/get-services/:carId', services)
+
+server.delete('/delete-vehicle/:carId', remove)
+server.put('/update-vehicle/:carId',)
 
 //! syncing for database below
 db

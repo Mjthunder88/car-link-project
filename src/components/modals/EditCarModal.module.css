@@ -20,14 +20,13 @@
 .modal_content {
     background-color: #6b9080;
     position: absolute;
-    z-index: 10;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 1rem;
     width: 55%;
 	color: #f6fff8;
-	padding:  4rem 10rem;
+	padding:  4rem 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,20 +36,25 @@
 .top_content {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 70%;
     padding-bottom: 1rem;
 }
 
-.icon {
-    position: fixed;
-    top: 1rem;
-    right: 1rem
+.back_btn {
+    background-color: #cce3de;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 10rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
 }
 
-.icon:hover {
+.back_btn:hover {
+    background-color: black;
+    color: #cce3de;
     cursor: pointer;
-    transform: scale(1.05, 1.05);
-    color: black;
 }
 
 .radio_btns {
@@ -94,3 +98,15 @@
     font-size: 1.5rem;
 }
 
+.top_btn_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.icon:hover {
+    cursor: pointer;
+    transform: scale(1.05, 1.05);
+    color: red;
+}

@@ -155,6 +155,7 @@ p {
 
 .edit_btn:hover {
     color: black;
+    cursor: pointer;
 }
 
 .edit_services {
@@ -173,9 +174,11 @@ p {
 
 .edit_services:hover {
     color: black;
+    cursor: pointer;
 }
 .edit_services_2:hover {
     color: black;
+    cursor: pointer;
 }
 
 .edit_container {

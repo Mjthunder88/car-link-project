@@ -1,29 +1,31 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "../components/UI/AddCarScreen.module.css";
 
 import CarCard from "../components/card/CarCard";
 import AddCarModal from "../components/modals/AddCarModal";
-import AuthContext from "../store/GlobalContext";
+
 
 import axios from "axios";
 
 const AddCarScreen = () => {
   const [addVehicleModal, setAddVehicleModal] = useState(false);
   const [makeArr, setMakeArr] = useState([]);
-  const authCtx = useContext(AuthContext)
 
-  const addModalHandler = () => {
+  const addModalHandler =  async () => {
     setAddVehicleModal(!addVehicleModal);
 
-    axios
-      .get("/get-makes")
-      .then((res) => {
-        console.log(res.data);
-        setMakeArr(res.data);
-      })
-      .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    axios
+        .get("/get-makes")
+        .then((res) => {
+          console.log(res.data);
+          setMakeArr(res.data);
+        })
+        .catch((err) => console.log(err));
+  }, [])
 
   return (
     <div className={styles.main}>
