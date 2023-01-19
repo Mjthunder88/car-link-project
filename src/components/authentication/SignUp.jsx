@@ -64,7 +64,7 @@ const SignUp = (props) => {
           id="register-last-name"
           type="text"
           placeholder="Enter your last name"
-          onChange={(e) => e.target.value}
+          onChange={(e) => setLastName(e.target.value)}
           value={lastName}
           required
         />
