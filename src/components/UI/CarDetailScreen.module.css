@@ -119,18 +119,22 @@
 
 .table_row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: #6b9080;
   padding: 1.5rem;
+  gap: 4rem;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
 .table_row_2 {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: #cce3de;
-  padding: 1rem;
+  padding: 1.5rem;
+  gap: 4rem;
   flex-grow: 0;
   flex-shrink: 0;
 }
@@ -160,15 +164,15 @@ p {
 .edit_services {
   color: #cce3de;
   transition: all 0.2s ease-in-out;
-  margin-left: -6rem;
-  margin-right: -6rem;
+  margin-left: -4rem;
+  margin-right: -5rem;
 }
 
 .edit_services_2 {
   color: #6b9080;
   transition: all 0.2s ease-in-out;
-  margin-left: -6rem;
-  margin-right: -6rem;
+  margin-left: -4rem;
+  margin-right: -5rem;
 }
 
 .edit_services:hover {
