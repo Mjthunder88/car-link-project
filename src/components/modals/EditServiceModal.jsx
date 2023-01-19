@@ -31,8 +31,23 @@ const EditServiceModal = ({ serviceModalShow, list }) => {
 
   };
 
-  const deleteServiceHandler = () => {
-    
+  const deleteServiceHandler = async () => {
+    let results = window.confirm(
+        "This will delete the current service, are you sure?"
+      );
+      if (results === true) {
+        await axios
+          .delete(`/delete-service/${globalCtx.currentService.id}`)
+          .then((res) => {
+            console.log(res.data);
+            list()
+            serviceModalShow()
+            alert("Service has been deleted");
+          })
+          .catch((err) => console.log(err));
+      } else {
+        return;
+      }
   };
 
   return (

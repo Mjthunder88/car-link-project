@@ -48,7 +48,8 @@ const EditCarModal = ({ editModalHandler, makeArr }) => {
           editModalHandler();
           navigate("/add-car");
           alert("Vehicle has been deleted");
-        });
+        })
+        .catch((err) => console.log(err));
     } else {
       return;
     }
