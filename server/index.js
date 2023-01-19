@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const server = express();
 
-server.use(express.static(path.resolve(__dirname, "../build")));
 
 const seed = require('./seed/seed')
 
@@ -20,6 +19,8 @@ const { PORT } = process.env;
 
 server.use(express.json());
 server.use(cors());
+
+server.use(express.static(path.resolve(__dirname, "../build")));
 
 const { register, login } = require('./controllers/auth')
 const { getMake } = require('./controllers/make')
