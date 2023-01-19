@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "../components/UI/HomeScreen.module.css";
-import logo from '../assets/logo.png'
+import logo from "../assets/logo.png";
 
 const HomeScreen = () => {
   return (
@@ -16,7 +16,7 @@ const HomeScreen = () => {
           date and in the know on their vehicle's health. Tracking and alerting
           users whenever something is wrong or due for inspection.
         </p>
-          <h2>Future Addtions</h2>
+        <h2>Future Addtions</h2>
         <div className={styles.main_content_bottom}>
           <p>Registration with your state's DMV</p>
           <p>

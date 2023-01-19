@@ -13,18 +13,10 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext);
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
-  };
-
-  const emailHandler = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
   };
 
   const submitHandler = (e) => {
@@ -36,17 +28,17 @@ const Login = (props) => {
         password,
       })
       .then((res) => {
-        console.log(res.data)
-        authCtx.login(res.data.token, res.data.exp, res.data.userId)
+        console.log(res.data);
+        authCtx.login(res.data.token, res.data.exp, res.data.userId);
         navigate("/");
       })
       .catch((err) => {
         if (err) {
           console.log(err, "Error during login");
-        } 
+        }
       });
-      setEmail("")
-      setPassword("")
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -58,7 +50,7 @@ const Login = (props) => {
           id="email"
           type="email"
           placeholder=" Enter your email"
-          onChange={emailHandler}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
           required
         />
@@ -70,7 +62,7 @@ const Login = (props) => {
               type="text"
               placeholder="Enter your password"
               className="password_input"
-              onChange={passwordHandler}
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
             />
@@ -80,7 +72,7 @@ const Login = (props) => {
               type="password"
               placeholder="Enter your password"
               className="password_input"
-              onChange={passwordHandler}
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
               required
             />

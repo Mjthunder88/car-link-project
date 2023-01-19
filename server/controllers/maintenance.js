@@ -41,8 +41,10 @@ module.exports = {
   services: async (req, res) => {
     try {
       const { carId } = req.params;
-      console.log(carId, 'HERER IN maintenance')
-      const serviceList = await Maintenance.findAll({ where: { carId: carId } });
+      console.log(carId, "HERER IN maintenance");
+      const serviceList = await Maintenance.findAll({
+        where: { carId: carId },
+      });
       res.status(200).send(serviceList);
     } catch (err) {
       console.log(err);

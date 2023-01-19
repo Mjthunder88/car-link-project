@@ -46,7 +46,7 @@
 .link_title {
   color: black;
   transition: all 0.3s;
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
   border-bottom: 0.1rem solid transparent;
 }
 

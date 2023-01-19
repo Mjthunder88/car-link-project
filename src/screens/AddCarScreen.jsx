@@ -5,7 +5,6 @@ import styles from "../components/UI/AddCarScreen.module.css";
 import CarCard from "../components/card/CarCard";
 import AddCarModal from "../components/modals/AddCarModal";
 
-
 import axios from "axios";
 
 const AddCarScreen = () => {
@@ -13,21 +12,20 @@ const AddCarScreen = () => {
   const [makeArr, setMakeArr] = useState([]);
   const [vehicles, setVehicles] = useState([]);
 
-  const addModalHandler =  async () => {
+  const addModalHandler = async () => {
     setAddVehicleModal(!addVehicleModal);
-
   };
 
   useEffect(() => {
-    fetchUserVehicle()
+    fetchUserVehicle();
     axios
-        .get("/get-makes")
-        .then((res) => {
-          console.log(res.data);
-          setMakeArr(res.data);
-        })
-        .catch((err) => console.log(err));
-  }, [])
+      .get("/get-makes")
+      .then((res) => {
+        console.log(res.data);
+        setMakeArr(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const fetchUserVehicle = async () => {
     await axios
@@ -42,7 +40,11 @@ const AddCarScreen = () => {
   return (
     <div className={styles.main}>
       {addVehicleModal && (
-        <AddCarModal addModalHandler={addModalHandler} makeArr={makeArr} fetchUserVehicle={fetchUserVehicle} />
+        <AddCarModal
+          addModalHandler={addModalHandler}
+          makeArr={makeArr}
+          fetchUserVehicle={fetchUserVehicle}
+        />
       )}
       <button
         className={addVehicleModal ? styles.remove_hover : styles.add_btn}

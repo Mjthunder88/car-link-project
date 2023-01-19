@@ -1,59 +1,59 @@
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .main h1 {
-    color: #f6fff8;
-    font-size: 3rem;
-   text-align: center;
-   padding-bottom: 3rem;
+  color: #f6fff8;
+  font-size: 3rem;
+  text-align: center;
+  padding-bottom: 3rem;
 }
 
 .main_background {
-    background-image: url(../../assets/bannerMedium5.jpg);
-    background-color: #6b9080;
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    width:100%;
-    padding: 10rem 0;
+  background-image: url(../../assets/bannerMedium5.jpg);
+  background-color: #6b9080;
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 10rem 0;
 }
 
 .main_content {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 1rem;
-    gap: 2rem;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  gap: 2rem;
 }
 
 .main_content h2 {
-    color: #6b9080;
-    font-size: 2rem;
-    font-weight: 800;
+  color: #6b9080;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 .main_content p {
-    font-size: 1.3rem;
-    max-width: 40vw;
-    text-align: center;
+  font-size: 1.3rem;
+  max-width: 40vw;
+  text-align: center;
 }
 
 .main_content_bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .logo_bottom {
-    max-width: 40vw;
+  max-width: 40vw;
 }
 
 .bottom_logo_container {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
 }

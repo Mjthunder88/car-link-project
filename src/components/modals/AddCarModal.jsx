@@ -32,7 +32,7 @@ const AddCarModal = ({ addModalHandler, makeArr, fetchUserVehicle }) => {
       })
       .then((res) => {
         console.log(res.data);
-        fetchUserVehicle()
+        fetchUserVehicle();
         addModalHandler();
       })
       .catch((err) => {

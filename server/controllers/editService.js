@@ -27,7 +27,7 @@ module.exports = {
         { where: { id: serviceId } },
         { returning: true }
       );
-      res.status(200).send(updated)
+      res.status(200).send(updated);
     } catch (err) {
       console.log(err);
       res.sendStatus(400);

@@ -21,22 +21,6 @@ const SignUp = (props) => {
     setShowPassword(!showPassword);
   };
 
-  const emailHandler = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const firstNameHandler = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const lastNameHandler = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
     axios
@@ -71,7 +55,7 @@ const SignUp = (props) => {
           id="register-first-name"
           type="text"
           placeholder=" Enter your first name"
-          onChange={firstNameHandler}
+          onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
           required
         />
@@ -80,7 +64,7 @@ const SignUp = (props) => {
           id="register-last-name"
           type="text"
           placeholder="Enter your last name"
-          onChange={lastNameHandler}
+          onChange={(e) => e.target.value}
           value={lastName}
           required
         />
@@ -89,7 +73,7 @@ const SignUp = (props) => {
           id="register-email"
           type="email"
           placeholder="Enter your email"
-          onChange={emailHandler}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
           required
         />
@@ -102,7 +86,7 @@ const SignUp = (props) => {
               placeholder="Enter your password"
               className="password_input"
               value={password}
-              onChange={passwordHandler}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           ) : (
@@ -112,7 +96,7 @@ const SignUp = (props) => {
               placeholder="Enter your password"
               className="password_input"
               value={password}
-              onChange={passwordHandler}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           )}

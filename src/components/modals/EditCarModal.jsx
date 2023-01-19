@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const EditCarModal = ({ editModalHandler, makeArr }) => {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-     await axios
+    await axios
       .put(`/update-vehicle/${authCtx.currentCar.id}`, {
         year,
         mileage,
@@ -29,9 +29,9 @@ const EditCarModal = ({ editModalHandler, makeArr }) => {
         model,
       })
       .then((res) => {
-        console.log(res.data)
-        editModalHandler()
-        navigate('/add-car')
+        console.log(res.data);
+        editModalHandler();
+        navigate("/add-car");
       })
       .catch((err) => console.log(err));
   };
@@ -152,10 +152,7 @@ const EditCarModal = ({ editModalHandler, makeArr }) => {
           maxLength="17"
           onChange={(e) => setVin(e.target.value)}
         />
-        <button
-          className={styles.submit_vehicle}
-          type="submit"
-        >
+        <button className={styles.submit_vehicle} type="submit">
           Submit
         </button>
       </form>

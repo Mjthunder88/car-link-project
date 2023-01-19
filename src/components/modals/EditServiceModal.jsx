@@ -13,41 +13,40 @@ const EditServiceModal = ({ serviceModalShow, list }) => {
   const [mileage, setMileage] = useState(globalCtx.currentService.mileage);
   const [notes, setNotes] = useState(globalCtx.currentService.details);
 
-  const formHandler =  async (e) => {
+  const formHandler = async (e) => {
     e.preventDefault();
-    await axios.put(`/update-service/${globalCtx.currentService.id}`, {
+    await axios
+      .put(`/update-service/${globalCtx.currentService.id}`, {
         service,
         date,
         mileage,
-        notes
-    })
-    .then((res) => {
-        console.log(res.data)
-        list()
-        serviceModalShow()
-
-    })
-    .catch((err) => console.log(err))
-
+        notes,
+      })
+      .then((res) => {
+        console.log(res.data);
+        list();
+        serviceModalShow();
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteServiceHandler = async () => {
     let results = window.confirm(
-        "This will delete the current service, are you sure?"
-      );
-      if (results === true) {
-        await axios
-          .delete(`/delete-service/${globalCtx.currentService.id}`)
-          .then((res) => {
-            console.log(res.data);
-            list()
-            serviceModalShow()
-            alert("Service has been deleted");
-          })
-          .catch((err) => console.log(err));
-      } else {
-        return;
-      }
+      "This will delete the current service, are you sure?"
+    );
+    if (results === true) {
+      await axios
+        .delete(`/delete-service/${globalCtx.currentService.id}`)
+        .then((res) => {
+          console.log(res.data);
+          list();
+          serviceModalShow();
+          alert("Service has been deleted");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      return;
+    }
   };
 
   return (

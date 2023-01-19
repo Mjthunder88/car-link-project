@@ -15,9 +15,9 @@ module.exports = {
           manufacturerId: make,
         },
         { where: { id: carId } },
-        {returning: true}
+        { returning: true }
       );
-      res.status(200).send(updatedVehicle)
+      res.status(200).send(updatedVehicle);
     } catch (err) {
       console.log(err);
       res.sendStatus(400);

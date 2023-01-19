@@ -3,7 +3,7 @@ const { Car } = require("../models/models");
 module.exports = {
   addVehicle: async (req, res) => {
     try {
-      console.log(req.body, 'in controller');
+      console.log(req.body, "in controller");
       const { year, mileage, vin, transmission, model, make, userId } =
         req.body;
       const manufacturerId = Number(make);

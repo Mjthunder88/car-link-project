@@ -1,190 +1,188 @@
 .main {
-    width: 100%;
-    height: 100%;
-    padding: 5rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+  width: 100%;
+  height: 100%;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .back_btn {
-    background-color: #cce3de;
-    border: none;
-    border-radius: 1rem;
-    padding: 1rem;
-    width: 10rem;
-    transition: all 0.3s ease-in-out;
-    font-size: 1rem;
-    font-weight: bold;
-    position: absolute;
-    top: 7rem;
-    right: 1rem;
+  background-color: #cce3de;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 10rem;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  top: 7rem;
+  right: 1rem;
 }
 
 .back_btn:hover {
-    transform: scale(1.05, 1.05);
-    background-color: black;
-    color: #cce3de;
-    cursor: pointer;
+  transform: scale(1.05, 1.05);
+  background-color: black;
+  color: #cce3de;
+  cursor: pointer;
 }
 
 .backBtn_container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 0 3rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 3rem;
 }
 
 .heading {
-    background-color: #6b9080;
-    color: #f6fff8;
-    border-radius: 1rem;
-    width: 80vw;
-    height: 30vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 1.5rem;
+  background-color: #6b9080;
+  color: #f6fff8;
+  border-radius: 1rem;
+  width: 80vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
 }
 
 .inner_bottom {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .log_container {
-    width: 80vw;
-    padding: 1rem;
-    border: #6b9080 solid .3rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 80vw;
+  padding: 1rem;
+  border: #6b9080 solid 0.3rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .add_maintenance_btn {
-    background-color: #cce3de;
-    border: none;
-    border-radius: 1rem;
-    padding: .8rem;
-    width: 10rem;
-    transition: all 0.3s ease-in-out;
-    font-size: 1rem;
-    font-weight: bold;
+  background-color: #cce3de;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  width: 10rem;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .add_maintenance_btn:hover {
-    transform: scale(1.05, 1.05);
-    background-color: black;
-    color: #cce3de;
-    cursor: pointer;
+  transform: scale(1.05, 1.05);
+  background-color: black;
+  color: #cce3de;
+  cursor: pointer;
 }
 
 .maintenance_input {
-    color: black;
-    border: black solid .1rem;
+  color: black;
+  border: black solid 0.1rem;
 }
 
 .input_container {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: #6b9080 solid .1rem;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: #6b9080 solid 0.1rem;
 }
 
 .maintenance_input::placeholder {
-    color: black;
+  color: black;
 }
 
 .form_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .log_details {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  width: 100%;
 }
 
 .th_headers {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
-
 .table_row {
-    display: flex;
-    justify-content: space-around;
-    background-color: #6b9080;
-    padding: 1.5rem;
-    flex-grow: 0;
-    flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #6b9080;
+  padding: 1.5rem;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .table_row_2 {
-    display: flex;
-    justify-content: space-around;
-    background-color: #cce3de;
-    padding: 1rem;
-    flex-grow: 0;
-    flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #cce3de;
+  padding: 1rem;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .heading_row {
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
 }
 
 p {
-    flex-basis: 10%;
+  flex-basis: 10%;
 }
 
 .edit_btn {
-    color: #cce3de;
-    transition: all .2s ease-in-out;
-    position: relative;
-    bottom: 1rem;
+  color: #cce3de;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  bottom: 1rem;
 }
 
 .edit_btn:hover {
-    color: black;
-    cursor: pointer;
+  color: black;
+  cursor: pointer;
 }
 
 .edit_services {
-    color:#cce3de;
-    transition: all .2s ease-in-out;
-    margin-left: -6rem;
-    margin-right: -6rem;
+  color: #cce3de;
+  transition: all 0.2s ease-in-out;
+  margin-left: -6rem;
+  margin-right: -6rem;
 }
 
 .edit_services_2 {
-    color: #6b9080;
-    transition: all .2s ease-in-out;
-    margin-left: -6rem;
-    margin-right: -6rem;
+  color: #6b9080;
+  transition: all 0.2s ease-in-out;
+  margin-left: -6rem;
+  margin-right: -6rem;
 }
 
 .edit_services:hover {
-    color: black;
-    cursor: pointer;
+  color: black;
+  cursor: pointer;
 }
 .edit_services_2:hover {
-    color: black;
-    cursor: pointer;
+  color: black;
+  cursor: pointer;
 }
 
 .edit_container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 2rem;
 }
-

@@ -49,7 +49,7 @@ export const GlobalContextProvider = (props) => {
   const [token, setToken] = useState(initalToken);
   const [userId, setUserId] = useState(null);
   const [currentCar, setCurrentCar] = useState("");
-  const [currentService, setCurrentService] = useState("")
+  const [currentService, setCurrentService] = useState("");
 
   const logout = () => {
     setToken(null);
@@ -81,9 +81,8 @@ export const GlobalContextProvider = (props) => {
 
   const serviceHandler = (services) => {
     // console.log(services)
-    setCurrentService(services)
-
-  }
+    setCurrentService(services);
+  };
 
   const contextValues = {
     token,

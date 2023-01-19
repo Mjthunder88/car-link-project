@@ -20,8 +20,8 @@ const CarDetailScreen = () => {
   const [notes, setNotes] = useState("");
   const [maintenanceList, setMaintenanceList] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [makeArr, setMakearr] = useState([])
-  const [serviceModal, setServiceModal] = useState(false)
+  const [makeArr, setMakearr] = useState([]);
+  const [serviceModal, setServiceModal] = useState(false);
 
   const editModalHandler = async () => {
     setShowEditModal(!showEditModal);
@@ -62,7 +62,7 @@ const CarDetailScreen = () => {
       .get(`/get-services/${authCtx.currentCar.id}`)
       .then((res) => {
         console.log(res.data);
-        authCtx.serviceHandler(res.data)
+        authCtx.serviceHandler(res.data);
         setMaintenanceList(res.data);
       })
       .catch((err) => {
@@ -70,28 +70,28 @@ const CarDetailScreen = () => {
       });
   };
 
-  const serviceModalHandler =  async (id) => {
-    await axios.get(`/edit-service/${id}`)
-   .then((res) => {
-     console.log(res.data)
-     authCtx.serviceHandler(res.data)
-     setServiceModal(!serviceModal)
-
-   })
-   .catch((err) => {
-     console.log(err)
-   })
- }
+  const serviceModalHandler = async (id) => {
+    await axios
+      .get(`/edit-service/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        authCtx.serviceHandler(res.data);
+        setServiceModal(!serviceModal);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     list();
     axios
-        .get("/get-makes")
-        .then((res) => {
-          console.log(res.data);
-          setMakearr(res.data)
-        })
-        .catch((err) => console.log(err));
+      .get("/get-makes")
+      .then((res) => {
+        console.log(res.data);
+        setMakearr(res.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const serviceList = maintenanceList.map((element, index) => {
@@ -130,7 +130,11 @@ const CarDetailScreen = () => {
       </div>
       <section className={styles.heading}>
         <div className={styles.edit_container}>
-          <BiMessageAltEdit size="2rem" className={styles.edit_btn} onClick={editModalHandler} />
+          <BiMessageAltEdit
+            size="2rem"
+            className={styles.edit_btn}
+            onClick={editModalHandler}
+          />
         </div>
         <h1>Maintenance</h1>
         <div className={styles.inner_bottom}>
@@ -194,8 +198,12 @@ const CarDetailScreen = () => {
           {serviceList}
         </section>
       </section>
-      {showEditModal && <EditCarModal editModalHandler={editModalHandler} makeArr={makeArr} />}
-      {serviceModal && <EditServiceModal serviceModalShow={serviceModalShow} list={list} />}
+      {showEditModal && (
+        <EditCarModal editModalHandler={editModalHandler} makeArr={makeArr} />
+      )}
+      {serviceModal && (
+        <EditServiceModal serviceModalShow={serviceModalShow} list={list} />
+      )}
     </div>
   );
 };

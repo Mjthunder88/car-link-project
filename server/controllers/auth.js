@@ -64,7 +64,7 @@ module.exports = {
             foundUser.dataValues.email,
             foundUser.dataValues.id
           );
-          const exp = Date.now() + 1000 * 60 * 60 * 24
+          const exp = Date.now() + 1000 * 60 * 60 * 24;
           res.status(200).send({
             email: foundUser.dataValues.email,
             userId: foundUser.dataValues.id,

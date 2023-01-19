@@ -12,10 +12,10 @@ module.exports = {
         ],
         where: { id: carId },
       });
-      res.status(200).send('Car has been Deleted')
+      res.status(200).send("Car has been Deleted");
     } catch (err) {
       console.log(err);
-      res.sendStatus(400)
+      res.sendStatus(400);
     }
   },
 };
