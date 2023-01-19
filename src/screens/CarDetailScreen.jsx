@@ -3,7 +3,7 @@ import axios from "axios";
 
 import AuthContext from "../store/GlobalContext";
 import EditCarModal from "../components/modals/EditCarModal";
-import EditServiceModal from "../components/modals/editServiceModal";
+import EditServiceModal from "../components/modals/EditServiceModal";
 
 import { useNavigate } from "react-router-dom";
 
@@ -75,7 +75,7 @@ const CarDetailScreen = () => {
    .then((res) => {
      console.log(res.data)
      authCtx.serviceHandler(res.data)
-
+     setServiceModal(!serviceModal)
 
    })
    .catch((err) => {
@@ -195,7 +195,7 @@ const CarDetailScreen = () => {
         </section>
       </section>
       {showEditModal && <EditCarModal editModalHandler={editModalHandler} makeArr={makeArr} />}
-      {serviceModal && <EditServiceModal serviceModalShow={serviceModalShow} />}
+      {serviceModal && <EditServiceModal serviceModalShow={serviceModalShow} list={list} />}
     </div>
   );
 };

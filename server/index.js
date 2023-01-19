@@ -23,11 +23,10 @@ const { register, login } = require('./controllers/auth')
 const { getMake } = require('./controllers/make')
 const { addVehicle } = require('./controllers/addVehicle')
 const { displayVehicles } = require('./controllers/displayVehicles')
-const { getVehicle } = require('./controllers/maintenance')
-const { addMaintenance } = require('./controllers/maintenance')
-const { services } = require('./controllers/maintenance')
+const { getVehicle, addMaintenance, services  } = require('./controllers/maintenance')
 const { remove } = require('./controllers/deleteVehicle')
 const { update } = require('./controllers/editVehicle')
+const { getService, updateService } = require('./controllers/editService')
 
 
 
@@ -89,6 +88,9 @@ server.get('/get-services/:carId', services)
 
 server.delete('/delete-vehicle/:carId', remove)
 server.put('/update-vehicle/:carId', update)
+
+server.get('/edit-service/:serviceId', getService)
+server.put('/update-service/:serviceId', updateService)
 
 //! syncing for database below
 db

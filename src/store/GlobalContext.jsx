@@ -75,12 +75,12 @@ export const GlobalContextProvider = (props) => {
   };
 
   const displayCarHandler = (car) => {
-    console.log(car);
+    // console.log(car);
     setCurrentCar(car);
   };
 
   const serviceHandler = (services) => {
-    console.log(services)
+    // console.log(services)
     setCurrentService(services)
 
   }
