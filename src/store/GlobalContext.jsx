@@ -9,6 +9,8 @@ const AuthContext = createContext({
   userId: null,
   currentCar: null,
   displayCarHandler: () => {},
+  currentService: null,
+  serviceHandler: () => {},
 });
 
 const calculateRemainingTime = (exp) => {
@@ -47,6 +49,7 @@ export const GlobalContextProvider = (props) => {
   const [token, setToken] = useState(initalToken);
   const [userId, setUserId] = useState(null);
   const [currentCar, setCurrentCar] = useState("");
+  const [currentService, setCurrentService] = useState("")
 
   const logout = () => {
     setToken(null);
@@ -62,9 +65,7 @@ export const GlobalContextProvider = (props) => {
 
   const login = (token, expirationTime, userId) => {
     setToken(token);
-    console.log(token, "token here");
     setUserId(userId);
-    console.log(userId, "HERE IN GLOBAL CONTEXT");
     localStorage.setItem("token", token);
     localStorage.setItem("userId", userId);
     localStorage.setItem("exp", expirationTime);
@@ -78,6 +79,12 @@ export const GlobalContextProvider = (props) => {
     setCurrentCar(car);
   };
 
+  const serviceHandler = (services) => {
+    console.log(services)
+    setCurrentService(services)
+
+  }
+
   const contextValues = {
     token,
     login,
@@ -85,6 +92,8 @@ export const GlobalContextProvider = (props) => {
     userId,
     currentCar,
     displayCarHandler,
+    serviceHandler,
+    currentService,
   };
 
   return (

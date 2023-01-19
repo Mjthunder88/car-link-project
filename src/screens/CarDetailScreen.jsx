@@ -3,6 +3,7 @@ import axios from "axios";
 
 import AuthContext from "../store/GlobalContext";
 import EditCarModal from "../components/modals/EditCarModal";
+import EditServiceModal from "../components/modals/editServiceModal";
 
 import { useNavigate } from "react-router-dom";
 
@@ -20,9 +21,13 @@ const CarDetailScreen = () => {
   const [maintenanceList, setMaintenanceList] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [makeArr, setMakearr] = useState([])
+  const [serviceModal, setServiceModal] = useState(false)
 
   const editModalHandler = async () => {
     setShowEditModal(!showEditModal);
+  };
+  const serviceModalShow = async () => {
+    setServiceModal(!serviceModal);
   };
 
   const backBtnHandler = () => {
@@ -57,12 +62,26 @@ const CarDetailScreen = () => {
       .get(`/get-services/${authCtx.currentCar.id}`)
       .then((res) => {
         console.log(res.data);
+        authCtx.serviceHandler(res.data)
         setMaintenanceList(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const serviceModalHandler =  async (id) => {
+    await axios.get(`/edit-service/${id}`)
+   .then((res) => {
+     console.log(res.data)
+     authCtx.serviceHandler(res.data)
+
+
+   })
+   .catch((err) => {
+     console.log(err)
+   })
+ }
 
   useEffect(() => {
     list();
@@ -95,6 +114,7 @@ const CarDetailScreen = () => {
                 ? `${styles.edit_services}`
                 : `${styles.edit_services_2}`
             }
+            onClick={() => serviceModalHandler(element.id)}
           />
         </div>
       </div>
@@ -175,6 +195,7 @@ const CarDetailScreen = () => {
         </section>
       </section>
       {showEditModal && <EditCarModal editModalHandler={editModalHandler} makeArr={makeArr} />}
+      {serviceModal && <EditServiceModal serviceModalShow={serviceModalShow} />}
     </div>
   );
 };

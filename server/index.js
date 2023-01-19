@@ -27,6 +27,7 @@ const { getVehicle } = require('./controllers/maintenance')
 const { addMaintenance } = require('./controllers/maintenance')
 const { services } = require('./controllers/maintenance')
 const { remove } = require('./controllers/deleteVehicle')
+const { update } = require('./controllers/editVehicle')
 
 
 
@@ -87,7 +88,7 @@ server.post('/add-maintenance/:carId', addMaintenance)
 server.get('/get-services/:carId', services)
 
 server.delete('/delete-vehicle/:carId', remove)
-server.put('/update-vehicle/:carId',)
+server.put('/update-vehicle/:carId', update)
 
 //! syncing for database below
 db

@@ -1,55 +1,58 @@
-import React, {useState, useContext} from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { RiDeleteBin5Line } from 'react-icons/ri'
-import styles from './EditCarModal.module.css'
+import { RiDeleteBin5Line } from "react-icons/ri";
+import styles from "./EditCarModal.module.css";
 
-import AuthContext from '../../store/GlobalContext'
+import AuthContext from "../../store/GlobalContext";
 
-
-const EditCarModal = ({editModalHandler, makeArr}) => {
-  const [year, setYear] = useState(2023);
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [mileage, setMileage] = useState("");
-  const [vin, setVin] = useState("");
+const EditCarModal = ({ editModalHandler, makeArr }) => {
+  const authCtx = useContext(AuthContext);
+  const [year, setYear] = useState(authCtx.currentCar.year);
+  const [make, setMake] = useState(authCtx.currentCar.manufacturer.id);
+  const [model, setModel] = useState(authCtx.currentCar.model);
+  const [mileage, setMileage] = useState(authCtx.currentCar.mileage);
+  const [vin, setVin] = useState(authCtx.currentCar.vin);
   const [transmission, setTransmission] = useState("Automatic");
-  const authCtx = useContext(AuthContext)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
-
-  const formSubmitHandler = (e) => {
-    e.preventDefault()
-    axios.put(`/update-vehicle/${authCtx.currentCar.id}`, {
-      year,
+  const formSubmitHandler = async (e) => {
+    e.preventDefault();
+     await axios
+      .put(`/update-vehicle/${authCtx.currentCar.id}`, {
+        year,
         mileage,
         vin,
         transmission,
         make,
         model,
-    })
-    .then((res) => {
-  
-    })
-    .catch((err) => console.log(err))
-  }
-
-  const deleteCarHandler =  async () => {
-    let results = window.confirm('This will delete the current vehicle, are you sure?')
-    if (results === true) {
-      await axios.delete(`/delete-vehicle/${authCtx.currentCar.id}`)
+      })
       .then((res) => {
         console.log(res.data)
         editModalHandler()
         navigate('/add-car')
-        alert('Vehicle has been deleted')
       })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteCarHandler = async () => {
+    let results = window.confirm(
+      "This will delete the current vehicle, are you sure?"
+    );
+    if (results === true) {
+      await axios
+        .delete(`/delete-vehicle/${authCtx.currentCar.id}`)
+        .then((res) => {
+          console.log(res.data);
+          editModalHandler();
+          navigate("/add-car");
+          alert("Vehicle has been deleted");
+        });
     } else {
-      return
+      return;
     }
-  }
+  };
 
   const options = makeArr.map((element, index) => {
     let newIndex = index + 1;
@@ -65,12 +68,18 @@ const EditCarModal = ({editModalHandler, makeArr}) => {
       <div className={styles.overlay}></div>
       <form className={styles.modal_content} onSubmit={formSubmitHandler}>
         <div className={styles.top_btn_container}>
-        <RiDeleteBin5Line
-          size="2.5rem"
-          className={styles.icon}
-          onClick={deleteCarHandler}
-        />
-        <button onClick={editModalHandler} className={styles.back_btn} type="button">Back</button>
+          <RiDeleteBin5Line
+            size="2.5rem"
+            className={styles.icon}
+            onClick={deleteCarHandler}
+          />
+          <button
+            onClick={editModalHandler}
+            className={styles.back_btn}
+            type="button"
+          >
+            Back
+          </button>
         </div>
         <div className={styles.top_content}>
           <h1>Edit Vehicle</h1>
@@ -80,7 +89,7 @@ const EditCarModal = ({editModalHandler, makeArr}) => {
           placeholder="Enter Year"
           min="1900"
           required
-          value={authCtx.currentCar.year}
+          value={year}
           onChange={(e) => setYear(e.target.value)}
         />
         <div className={styles.select_wrapper}>
@@ -89,7 +98,7 @@ const EditCarModal = ({editModalHandler, makeArr}) => {
             name="make"
             id="make"
             onChange={(e) => setMake(e.target.value)}
-            value={authCtx.currentCar.manufacturer.id}
+            value={make}
           >
             {options}
           </select>
@@ -99,7 +108,7 @@ const EditCarModal = ({editModalHandler, makeArr}) => {
           placeholder="Enter Model"
           required
           onChange={(e) => setModel(e.target.value)}
-          value={authCtx.currentCar.model}
+          value={model}
         />
         <input
           type="number"
@@ -107,7 +116,7 @@ const EditCarModal = ({editModalHandler, makeArr}) => {
           min="0"
           required
           onChange={(e) => setMileage(e.target.value)}
-          value={authCtx.currentCar.mileage}
+          value={mileage}
         />
         <label htmlFor="transmission" className={styles.radio_font}>
           Transmission Type:
@@ -138,14 +147,19 @@ const EditCarModal = ({editModalHandler, makeArr}) => {
           type="text"
           placeholder="Enter Vin"
           required
-          value={authCtx.currentCar.vin}
+          value={vin}
           maxLength="17"
           onChange={(e) => setVin(e.target.value)}
         />
-        <button className={styles.submit_vehicle} onClick={() => editModalHandler()}>Submit</button>
+        <button
+          className={styles.submit_vehicle}
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default EditCarModal
+export default EditCarModal;

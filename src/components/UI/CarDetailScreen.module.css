@@ -122,7 +122,7 @@
     display: flex;
     justify-content: space-around;
     background-color: #6b9080;
-    padding: 1rem;
+    padding: 1.5rem;
     flex-grow: 0;
     flex-shrink: 0;
 }

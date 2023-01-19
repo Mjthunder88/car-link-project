@@ -1,0 +1,94 @@
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+
+}
+
+.modal {
+    z-index: 400;
+}
+
+.modal_content {
+    background-color: #6b9080;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    width: 55%;
+	color: #f6fff8;
+	padding:  4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top_content {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    padding-bottom: 1rem;
+}
+
+.back_btn {
+    background-color: #cce3de;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 10rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.back_btn:hover {
+    background-color: black;
+    color: #cce3de;
+    cursor: pointer;
+}
+
+.submit_vehicle {
+    background-color: #cce3de;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 10rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.submit_vehicle:hover {
+    transform: scale(1.05, 1.05);
+    background-color: black;
+    color: #cce3de;
+    cursor: pointer;
+}
+
+
+.modal input {
+    width: 75%;
+}
+
+.top_btn_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.icon:hover {
+    cursor: pointer;
+    transform: scale(1.05, 1.05);
+    color: red;
+}
