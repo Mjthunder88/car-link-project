@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,8 +10,7 @@ import { AiOutlineCar } from "react-icons/ai";
 
 import AuthContext from "../../store/GlobalContext";
 
-const CarCard = () => {
-  const [vehicles, setVehicles] = useState([]);
+const CarCard = ({vehicles}) => {
   const authCtx = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -28,22 +27,6 @@ const CarCard = () => {
     })
   }
 
-  const fetchUserVehilce = async () => {
-    await axios
-      .get(`/get-vehicles/${localStorage.userId}`)
-      .then((res) => {
-        console.log(res.data);
-        setVehicles(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-  
-
-
-  useEffect(() => {
-  
-    fetchUserVehilce();
-  }, []);
 
   const list = vehicles.map((element, index) => {
     return (

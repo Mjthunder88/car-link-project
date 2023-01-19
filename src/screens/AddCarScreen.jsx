@@ -11,6 +11,7 @@ import axios from "axios";
 const AddCarScreen = () => {
   const [addVehicleModal, setAddVehicleModal] = useState(false);
   const [makeArr, setMakeArr] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
 
   const addModalHandler =  async () => {
     setAddVehicleModal(!addVehicleModal);
@@ -18,6 +19,7 @@ const AddCarScreen = () => {
   };
 
   useEffect(() => {
+    fetchUserVehicle()
     axios
         .get("/get-makes")
         .then((res) => {
@@ -27,10 +29,20 @@ const AddCarScreen = () => {
         .catch((err) => console.log(err));
   }, [])
 
+  const fetchUserVehicle = async () => {
+    await axios
+      .get(`/get-vehicles/${localStorage.userId}`)
+      .then((res) => {
+        console.log(res.data);
+        setVehicles(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className={styles.main}>
       {addVehicleModal && (
-        <AddCarModal addModalHandler={addModalHandler} makeArr={makeArr} />
+        <AddCarModal addModalHandler={addModalHandler} makeArr={makeArr} fetchUserVehicle={fetchUserVehicle} />
       )}
       <button
         className={addVehicleModal ? styles.remove_hover : styles.add_btn}
@@ -38,7 +50,7 @@ const AddCarScreen = () => {
       >
         Add Vehicle
       </button>
-      <CarCard />
+      <CarCard vehicles={vehicles} />
     </div>
   );
 };

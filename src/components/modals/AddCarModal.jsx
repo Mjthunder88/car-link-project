@@ -8,7 +8,7 @@ import styles from "./AddCarModal.module.css";
 
 import { VscClose } from "react-icons/vsc";
 
-const AddCarModal = ({ addModalHandler, makeArr }) => {
+const AddCarModal = ({ addModalHandler, makeArr, fetchUserVehicle }) => {
   const authCtx = useContext(AuthContext);
   const [year, setYear] = useState(2023);
   const [make, setMake] = useState("");
@@ -32,6 +32,7 @@ const AddCarModal = ({ addModalHandler, makeArr }) => {
       })
       .then((res) => {
         console.log(res.data);
+        fetchUserVehicle()
         addModalHandler();
       })
       .catch((err) => {
