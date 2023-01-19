@@ -96,7 +96,7 @@ server.get('/edit-service/:serviceId', getService)
 server.put('/update-service/:serviceId', updateService)
 server.delete('/delete-service/:serviceId', removeService)
 
-app.get('/*', function (req, res) {
+server.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
