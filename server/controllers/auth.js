@@ -12,7 +12,7 @@ const createToken = (email, id) => {
       email,
       id,
     },
-    SECRET,
+    `${SECRET}`,
     {
       expiresIn: "1d",
     }
