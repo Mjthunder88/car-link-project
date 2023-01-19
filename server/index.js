@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const server = express();
 
+server.use(express.static(path.resolve(__dirname, "../build")));
+
 const seed = require('./seed/seed')
 
 const db = require("./database");
@@ -14,7 +16,7 @@ const {
   Maintenance
 } = require("./models/models");
 
-const { SERVER_PORT } = process.env;
+const { PORT } = process.env;
 
 server.use(express.json());
 server.use(cors());
@@ -94,6 +96,10 @@ server.get('/edit-service/:serviceId', getService)
 server.put('/update-service/:serviceId', updateService)
 server.delete('/delete-service/:serviceId', removeService)
 
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
+
 //! syncing for database below
 db
 .sync()
@@ -105,4 +111,4 @@ db
     console.log(err);
   });
 
-server.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`));
+server.listen( PORT, () => console.log(`Server running on ${PORT}`));
