@@ -40,3 +40,27 @@
     color: #cce3de;
     cursor: pointer;
 }
+
+@media screen and (min-width: 375px) and (max-width: 425px) {
+    .car_name {
+        display: flex;
+        gap: .5rem;
+        color: #f6fff8;
+        font-size: 1.5rem;
+    }
+    
+    .card_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #6b9080;
+        padding: 2rem 8rem;
+        gap: 2rem;
+        border-radius: 1rem;
+        max-width: 90vw;
+        min-width: 30vw;
+        width: 90vw;
+    }
+  
+}

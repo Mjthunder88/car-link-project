@@ -21,7 +21,7 @@ const { PORT } = process.env;
 server.use(express.json());
 server.use(cors());
 
-server.use(express.static(path.resolve(__dirname, "../build")));
+// server.use(express.static(path.resolve(__dirname, "../build")));
 
 const { register, login } = require('./controllers/auth')
 const { getMake } = require('./controllers/make')
@@ -98,9 +98,9 @@ server.get('/edit-service/:serviceId', getService)
 server.put('/update-service/:serviceId', updateService)
 server.delete('/delete-service/:serviceId', removeService)
 
-server.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
+// server.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
+// });
 
 //! syncing for database below
 db

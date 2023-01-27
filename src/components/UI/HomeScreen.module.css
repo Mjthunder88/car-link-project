@@ -57,3 +57,31 @@
   justify-content: center;
   padding-bottom: 2rem;
 }
+
+@media screen and (min-width: 375px) and (max-width: 425px) {
+  .main_content {
+    display: flex;
+    height: 115vh;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    gap: 1rem;
+  }
+  
+  .main_content p {
+    font-size: 1.3rem;
+    max-width: 60vw;
+    text-align: center;
+  }
+  
+  .main_content_bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo_bottom {
+    max-width: 60vw;
+  }
+}
