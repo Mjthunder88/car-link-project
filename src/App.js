@@ -13,7 +13,6 @@ import CarDetailScreen from "./screens/CarDetailScreen";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
-// "start": "node ./server/index.js && npm build",    put back in package.json when done for merge
 
 function App() {
   const authCtx = useContext(AuthContext);
